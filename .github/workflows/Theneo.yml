@@ -19,5 +19,5 @@ jobs:
         uses: theneoAPIDoc/api-documentation@main
         with:
           PATH: 1.yaml
-          PROJECT_KEY: ragaca
-          SECRET: 60da213f-1c9d-43f2-8f89-aaff97c2390e
+          PROJECT_KEY: trst-action
+          SECRET: 41dcc8db-6d91-4efe-8882-4d8b216ff3d7
