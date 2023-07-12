@@ -1,0 +1,4849 @@
+openapi: 3.0.0
+info:
+  title: 3dCart
+  description: 3dcart is a complete and robust eCommerce platform designed to help online store owners thrive in a competitive market. With hundreds of features built directly into its software, business owners can effectively open, operate and maintain a successful online store with relative ease and efficiency.
+  termsOfService: https://www.3dcart.com/legal.html
+  version: v1
+  contact:
+    name: No Contact
+    url: http://example.com
+    email: email@example.com
+  license:
+    name: No License
+    url: http://example.com
+servers:
+  - url: httpsapirest.3dcart.com/
+paths:
+  /3dCartWebAPI/v1/AdminPermissions:
+    get:
+      summary: Get all Admin Permissions
+      description: Get a list of all Admin Permissions
+      operationId: Admins_GetAllAdminPermissions
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: section
+          in: query
+          description: Admin Permission Section
+          schema:
+            type: string
+        - name: action
+          in: query
+          description: Admin Permission Action
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/AdminPermissions/{id}:
+    get:
+      summary: Get a Permission
+      description: Get a Permission
+      operationId: Admins_GetAdminPermission
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Admins:
+    get:
+      summary: Get all Admin Users
+      description: Get a list of all Admin Users
+      operationId: Admins_GetAllAdminUsers
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: username
+          in: query
+          description: Username of the Admin User
+          schema:
+            type: string
+        - name: external_id
+          in: query
+          description: Admin ExternalId
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Admins/{id}:
+    get:
+      summary: Get an Admin User
+      description: Get an Admin User
+      operationId: Admins_GetAdmin
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Admins/{id}/LoginToken:
+    get:
+      summary: Get the LoginToken from a specific Admin User
+      description: ''
+      operationId: Admins_GetAdminLoginToken
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+        - name: targetpage
+          in: query
+          description: Target Page
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Cart:
+    post:
+      summary: Adds a new cart to the system
+      description: ''
+      operationId: Carts_Post
+      parameters: []
+  /3dCartWebAPI/v1/Cart/{orderkey}:
+    get:
+      summary: Get a specific cart
+      description: Get a specific cart
+      operationId: Carts_GetCart
+      parameters:
+        - name: orderkey
+          in: path
+          description: Order Key
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Cart/{orderkey}/Item:
+    post:
+      summary: Adds a new item to a cart
+      description: ''
+      operationId: Carts_Post
+      parameters:
+        - name: orderkey
+          in: path
+          description: Order Key
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Cart/{orderkey}/Item/{cartitemid}:
+    put:
+      summary: Updates a specific item from a specific Cart
+      description: ''
+      operationId: Carts_Update
+      parameters:
+        - name: orderkey
+          in: path
+          description: Order Key
+          schema:
+            type: string
+        - name: cartitemid
+          in: path
+          description: The unique index ID of an Item
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Categories:
+    get:
+      summary: Get all Categories
+      description: Get a list of all categories
+      operationId: Category_GetAllCategories
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: category
+          in: query
+          description: Name of the Category
+          schema:
+            type: object
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Categories/{categoryid}:
+    put:
+      summary: This method is used to update a single category record in the database. The {categoryid} parameter specifies which category to update.
+      description: ''
+      operationId: Category_Update
+      parameters:
+        - name: categoryid
+          in: path
+          description: Category ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Categories/{categoryid}/Options:
+    get:
+      summary: Get the options from a specific Category
+      description: Get the options from a specific Category
+      operationId: Category_GetAllCategoryOptions
+      parameters:
+        - name: categoryid
+          in: path
+          description: Category ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Categories/{categoryid}/Options/{optionsetid}:
+    put:
+      summary: Updates specific options from a specific Category
+      description: ''
+      operationId: Category_Update
+      parameters:
+        - name: categoryid
+          in: path
+          description: Category ID
+          schema:
+            type: integer
+        - name: optionsetid
+          in: path
+          description: OptionSetID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Categories/{categoryid}/Products:
+    get:
+      summary: Get all products from a specific category
+      description: Get a list of all products from a specific category
+      operationId: Products_GetAllProductsFromCategory
+      parameters:
+        - name: categoryid
+          in: path
+          description: Category ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: costfrom
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: costto
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: pricefrom
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: priceto
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: stockfrom
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: stockto
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: hide
+          in: query
+          description: Hide Flag
+          schema:
+            type: boolean
+        - name: freeshipping
+          in: query
+          description: Free Shipping Flag
+          schema:
+            type: boolean
+        - name: onsale
+          in: query
+          description: On Sale Flag
+          schema:
+            type: boolean
+        - name: nontax
+          in: query
+          description: Non-Taxable Flag
+          schema:
+            type: integer
+        - name: notforsale
+          in: query
+          description: Not For Sale Flag
+          schema:
+            type: boolean
+        - name: giftcertificate
+          in: query
+          description: Gift Certificate Flag
+          schema:
+            type: boolean
+        - name: homespecial
+          in: query
+          description: Home Special Flag
+          schema:
+            type: boolean
+        - name: categoryspecial
+          in: query
+          description: Category Special Flag
+          schema:
+            type: boolean
+        - name: nonsearchable
+          in: query
+          description: Non-Searchable Flag
+          schema:
+            type: boolean
+        - name: selfship
+          in: query
+          description: Ships by itself Flag
+          schema:
+            type: boolean
+        - name: rewarddisable
+          in: query
+          description: Disable Rewards Flag
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Categories/{id}:
+    get:
+      summary: Get a Category
+      description: Get a category
+      operationId: Category_GetCategory
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM:
+    get:
+      summary: Get all CRMs
+      description: Get a list of all CRMs
+      operationId: CRM_GetAllCRMs
+      parameters:
+        - name: subject
+          in: query
+          description: Subject of the CRM
+          schema:
+            type: string
+        - name: departmentid
+          in: query
+          description: Department of the CRM
+          schema:
+            type: integer
+        - name: statusid
+          in: query
+          description: Status of the CRM
+          schema:
+            type: integer
+        - name: openedstartdate
+          in: query
+          description: Date Opened (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: openedenddate
+          in: query
+          description: Date Last Action (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastactionstartdate
+          in: query
+          description: Date Opened (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastactionenddate
+          in: query
+          description: Date Last Action (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: customername
+          in: query
+          description: Customer Name
+          schema:
+            type: string
+        - name: customeremail
+          in: query
+          description: Customer Email
+          schema:
+            type: string
+        - name: customerphone
+          in: query
+          description: Customer Phone
+          schema:
+            type: string
+        - name: customeripaddress
+          in: query
+          description: Customer Ip Address
+          schema:
+            type: string
+        - name: orderid
+          in: query
+          description: Order Id associated with the CRM
+          schema:
+            type: integer
+        - name: custid
+          in: query
+          description: Customer Id associated with the CRM
+          schema:
+            type: integer
+        - name: productid
+          in: query
+          description: Product Id associated with the CRM
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/{crmid}/message:
+    get:
+      summary: Get all the messages from a specific CRM
+      description: ''
+      operationId: CRM_GetAllCRMMessages
+      parameters:
+        - name: crmid
+          in: path
+          description: CRM ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/{crmid}/message/{msgid}:
+    get:
+      summary: Get a specific Message
+      description: Get a specific Message
+      operationId: CRM_GetCRMMessage
+      parameters:
+        - name: crmid
+          in: path
+          description: CRM ID
+          schema:
+            type: integer
+        - name: msgid
+          in: path
+          description: Message ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/{id}:
+    get:
+      summary: Get a specific CRM
+      description: Get a specific CRM
+      operationId: CRM_GetCRM
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/{id}/message:
+    post:
+      summary: Adds a new CRM Message to the system
+      description: ''
+      operationId: CRM_PostMessage
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/department:
+    get:
+      summary: Get all CRM Departments
+      description: Get a list of all CRM Departments
+      operationId: CRM_GetAllCRMDepartments
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/department/{id}:
+    put:
+      summary: This method is used to update a single CRM Department record in the database. The {id} parameter specifies which CRM Department record to update.
+      description: ''
+      operationId: CRM_UpdateDepartment
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/savedreply:
+    get:
+      summary: Get all CRMs
+      description: Get a list of all CRMs
+      operationId: CRM_GetAllCRMSavedReplies
+      parameters:
+        - name: title
+          in: query
+          description: Title
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/savedreply/{id}:
+    get:
+      summary: Get a specific CRM Saved Reply
+      description: Get a specific CRM Saved Reply
+      operationId: CRM_GetCRMSavedReply
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/status:
+    get:
+      summary: Get all CRM Status
+      description: Get a list of all CRM Status
+      operationId: CRM_GetAllCRMStatus
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CRM/status/{id}:
+    put:
+      summary: This method is used to update a single CRM Status record in the database. The {id} parameter specifies which CRM Status record to update.
+      description: ''
+      operationId: CRM_UpdateStatus
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CustomerGroups:
+    get:
+      summary: Get all CustomerGroups
+      description: Get a list of all CustomerGroups
+      operationId: CustomerGroups_GetAllCustomerGroups
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CustomerGroups/{customergroupid}:
+    put:
+      summary: This method is used to update a single customer group in the database. The {id} parameter specifies which customer group to update.
+      description: Click here for more information on updating collections.
+      operationId: CustomerGroups_Update
+      parameters:
+        - name: customergroupid
+          in: path
+          description: Customer Group ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CustomerGroups/{id}:
+    get:
+      summary: Get a CustomerGroup
+      description: Get a CustomerGroup
+      operationId: CustomerGroups_GetCustomerGroup
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/CustomerGroups/{id}/Customers:
+    get:
+      summary: Get Customers from a Customer Group
+      description: Get a list of all Customers from a Customer Group
+      operationId: Customers_GetCustomerFromCustomerGroup
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Email of the Customer
+          schema:
+            type: string
+        - name: firstname
+          in: query
+          description: Firstname of the Customer
+          schema:
+            type: string
+        - name: lastname
+          in: query
+          description: Lastname of the Customer
+          schema:
+            type: string
+        - name: country
+          in: query
+          description: Country name of the Customer
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: State of the Customer
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: City of the Customer
+          schema:
+            type: string
+        - name: phone
+          in: query
+          description: Phone of the Customer
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Customers:
+    get:
+      summary: Get all Customers
+      description: Get a list of all Customers
+      operationId: Customers_GetAllCustomers
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Email of the Customer
+          schema:
+            type: string
+        - name: firstname
+          in: query
+          description: Firstname of the Customer
+          schema:
+            type: string
+        - name: lastname
+          in: query
+          description: Lastname of the Customer
+          schema:
+            type: string
+        - name: country
+          in: query
+          description: Country name of the Customer
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: State of the Customer
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: City of the Customer
+          schema:
+            type: string
+        - name: phone
+          in: query
+          description: Phone of the Customer
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Customers/{customerid}:
+    put:
+      summary: This method is used to update a single customer record in the database. The {id} parameter specifies which customer record to update.
+      description: ''
+      operationId: Customers_Update
+      parameters:
+        - name: customerid
+          in: path
+          description: Customer ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Customers/{id}:
+    get:
+      summary: Get a Customer
+      description: Get a Customer
+      operationId: Customers_GetAllCustomers
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Distributors:
+    get:
+      summary: Get all Distributors
+      description: Get all Distributors
+      operationId: Distributors_GetAllDistributors
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: company
+          in: query
+          description: Company Name of the Distributor
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Email of the Customer
+          schema:
+            type: string
+        - name: country
+          in: query
+          description: Country name of the Customer
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: State of the Customer
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: City of the Customer
+          schema:
+            type: string
+        - name: phone
+          in: query
+          description: Phone of the Customer
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Distributors/{distributorid}:
+    put:
+      summary: This method is used to update a single distributor record in the database. The {distributorid} parameter specifies which distributor to update.
+      description: ''
+      operationId: Distributors_Update
+      parameters:
+        - name: distributorid
+          in: path
+          description: Distributor ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Distributors/{distributorid}/Products:
+    get:
+      summary: Get all products from a specific distributor
+      description: Get a list of all products from a specific distributor
+      operationId: Products_GetAllProductsFromDistributor
+      parameters:
+        - name: distributorid
+          in: path
+          description: Distributor ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: costfrom
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: costto
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: pricefrom
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: priceto
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: stockfrom
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: stockto
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: hide
+          in: query
+          description: Hide Flag
+          schema:
+            type: boolean
+        - name: freeshipping
+          in: query
+          description: Free Shipping Flag
+          schema:
+            type: boolean
+        - name: onsale
+          in: query
+          description: On Sale Flag
+          schema:
+            type: boolean
+        - name: nontax
+          in: query
+          description: Non-Taxable Flag
+          schema:
+            type: integer
+        - name: notforsale
+          in: query
+          description: Not For Sale Flag
+          schema:
+            type: boolean
+        - name: giftcertificate
+          in: query
+          description: Gift Certificate Flag
+          schema:
+            type: boolean
+        - name: homespecial
+          in: query
+          description: Home Special Flag
+          schema:
+            type: boolean
+        - name: categoryspecial
+          in: query
+          description: Category Special Flag
+          schema:
+            type: boolean
+        - name: nonsearchable
+          in: query
+          description: Non-Searchable Flag
+          schema:
+            type: boolean
+        - name: selfship
+          in: query
+          description: Ships by itself Flag
+          schema:
+            type: boolean
+        - name: rewarddisable
+          in: query
+          description: Disable Rewards Flag
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Distributors/{id}:
+    get:
+      summary: Get a Distributor
+      description: Get a Distributor
+      operationId: Distributors_GetAllDistributors
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/FrontendScripts:
+    get:
+      summary: Get all Frontend Scripts
+      description: Get a list of all Frontend Scripts
+      operationId: FrontendScripts_GetAllFrontendScripts
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/FrontendScripts/{frontendscriptid}:
+    put:
+      summary: This method is used to update a single frontend script record in the database. The {frontendscriptid} parameter specifies which frontendscript record to update.
+      description: ''
+      operationId: FrontendScripts_Update
+      parameters:
+        - name: frontendscriptid
+          in: path
+          description: Frontend Script ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/FrontendScripts/{id}:
+    get:
+      summary: Get a Frontend Script
+      description: Get a Frontend Script
+      operationId: FrontendScripts_GetFrontendScripts
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/GiftRegistries:
+    get:
+      summary: Get all GiftRegistries
+      description: Get a list of all GiftRegistries
+      operationId: GiftRegistries_GetAllGiftRegistries
+      parameters:
+        - name: catalogid
+          in: query
+          description: Catalog ID
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: datestartcreated
+          in: query
+          description: Created Date Start (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateendcreated
+          in: query
+          description: Created Date End (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: datestartevent
+          in: query
+          description: Event Date Start (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateendevent
+          in: query
+          description: Event Date End (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: datestartexpiration
+          in: query
+          description: Expiration Date Start (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateendexpiration
+          in: query
+          description: Expiration Date End (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/GiftRegistries/{giftregistryid}:
+    get:
+      summary: Get a specific GiftRegistry
+      description: Get a specific GiftRegistry
+      operationId: GiftRegistries_GetGiftRegistry
+      parameters:
+        - name: giftregistryid
+          in: path
+          description: Gift Resitry ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/GiftRegistries/{giftregistryid}/Items:
+    get:
+      summary: Gets the items from a specific Gift Registry
+      description: ''
+      operationId: GiftRegistries_GetAllGiftRegistryItem
+      parameters:
+        - name: giftregistryid
+          in: path
+          description: Gift Resitry ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Manufacturers:
+    get:
+      summary: Get all Manufacturers
+      description: Get a list of all Manufacturers
+      operationId: Manufacturer_GetAllManufacturers
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: manufacturer
+          in: query
+          description: Name of the Manufacturer
+          schema:
+            type: object
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Manufacturers/{id}:
+    get:
+      summary: Get a Manufacturer
+      description: Get a Manufacturer
+      operationId: Manufacturer_GetManufacturer
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Manufacturers/{manufacturerid}:
+    put:
+      summary: This method is used to update a single manufacturer record in the database. The {manufacturerid} parameter specifies which manufacturer record to update.
+      description: ''
+      operationId: Manufacturer_Update
+      parameters:
+        - name: manufacturerid
+          in: path
+          description: Manufacturer ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Manufacturers/{manufacturerid}/Products:
+    get:
+      summary: Get all products from a specific manufacturer
+      description: Get a list of all products from a specific manufacturer
+      operationId: Products_GetAllProductsFromManufacturer
+      parameters:
+        - name: manufacturerid
+          in: path
+          description: Manufacturer ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: costfrom
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: costto
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: pricefrom
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: priceto
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: stockfrom
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: stockto
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: hide
+          in: query
+          description: Hide Flag
+          schema:
+            type: boolean
+        - name: freeshipping
+          in: query
+          description: Free Shipping Flag
+          schema:
+            type: boolean
+        - name: onsale
+          in: query
+          description: On Sale Flag
+          schema:
+            type: boolean
+        - name: nontax
+          in: query
+          description: Non-Taxable Flag
+          schema:
+            type: integer
+        - name: notforsale
+          in: query
+          description: Not For Sale Flag
+          schema:
+            type: boolean
+        - name: giftcertificate
+          in: query
+          description: Gift Certificate Flag
+          schema:
+            type: boolean
+        - name: homespecial
+          in: query
+          description: Home Special Flag
+          schema:
+            type: boolean
+        - name: categoryspecial
+          in: query
+          description: Category Special Flag
+          schema:
+            type: boolean
+        - name: nonsearchable
+          in: query
+          description: Non-Searchable Flag
+          schema:
+            type: boolean
+        - name: selfship
+          in: query
+          description: Ships by itself Flag
+          schema:
+            type: boolean
+        - name: rewarddisable
+          in: query
+          description: Disable Rewards Flag
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Orders:
+    get:
+      summary: Get all orders
+      description: Get a list of all orders
+      operationId: Orders_GetAllOrders
+      parameters:
+        - name: invoicenumber
+          in: query
+          description: Invoice number (exact match)
+          schema:
+            type: integer
+        - name: invoicenumberstart
+          in: query
+          description: Invoice number start (range search)
+          schema:
+            type: integer
+        - name: invoicenumberend
+          in: query
+          description: Invoice number end (range search)
+          schema:
+            type: integer
+        - name: invoiceprefix
+          in: query
+          description: Invoice Prefix of the order
+          schema:
+            type: string
+        - name: orderstatus
+          in: query
+          description: Status of the order
+          schema:
+            type: object
+        - name: datestart
+          in: query
+          description: Date Start (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateend
+          in: query
+          description: Date End (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: billingemail
+          in: query
+          description: Billing Email of the order
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Orders/{orderid}:
+    get:
+      summary: Get a specific order
+      description: Get a specific order
+      operationId: Orders_GetOrder
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Items:
+    get:
+      summary: Gets the items from a specific Order
+      description: ''
+      operationId: Orders_GetAllOrderItems
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Items/{itemindexid}:
+    put:
+      summary: Updates a specific item from a specific Product
+      description: ''
+      operationId: Orders_Update
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: itemindexid
+          in: path
+          description: The unique indexID of an Item
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Questions:
+    get:
+      summary: Gets the questions from a specific Order
+      description: ''
+      operationId: Orders_GetAllOrderQuestions
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Questions/{questionanswerindexid}:
+    put:
+      summary: Updates a specific question from a specific Product
+      description: ''
+      operationId: Orders_Update
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: questionanswerindexid
+          in: path
+          description: QuestionID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Shipments:
+    get:
+      summary: Gets the shipments from a specific Order
+      description: ''
+      operationId: Orders_GetAllOrderShipments
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Shipments/{shipmentid}:
+    put:
+      summary: Updates a specific shipment from a specific Order
+      description: ''
+      operationId: Orders_Update
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: shipmentid
+          in: path
+          description: ShipmentID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Transactions:
+    get:
+      summary: Gets the transactions from a specific Order
+      description: ''
+      operationId: Orders_GetAllOrderTransactions
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Orders/{orderid}/Transactions/{transactionindexid}:
+    put:
+      summary: Updates a specific transaction from a specific Product
+      description: ''
+      operationId: Orders_Update
+      parameters:
+        - name: orderid
+          in: path
+          description: Order ID
+          schema:
+            type: integer
+        - name: transactionindexid
+          in: path
+          description: ''
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/OrderStatus:
+    get:
+      summary: Get all OrderStatus
+      description: Get a list of all OrderStatus
+      operationId: OrderStatus_GetAllOrderStatus
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/OrderStatus/{id}:
+    get:
+      summary: Get an OrderStatus
+      description: Get an OrderStatus
+      operationId: OrderStatus_GetOrderStatus
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/PaymentTokens:
+    get:
+      summary: Get all Payment Tokens
+      description: Get a list of all Payment Tokens
+      operationId: PaymentToken_GetAllPaymentTokens
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/PaymentTokens/{id}:
+    get:
+      summary: Get a Payment Token
+      description: Get a Payment Token
+      operationId: PaymentToken_GetPaymentToken
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/PaymentTokens/{paymenttokenid}:
+    put:
+      summary: This method is used to update a single paymenttoken record in the database. The {paymenttokenid} parameter specifies which paymenttoken record to update.
+      description: ''
+      operationId: PaymentToken_Update
+      parameters:
+        - name: paymenttokenid
+          in: path
+          description: PaymentTokenID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products:
+    get:
+      summary: Get all products
+      description: Get a list of all products
+      operationId: Products_GetAllProducts
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: costfrom
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: costto
+          in: query
+          description: Cost of a product
+          schema:
+            type: number
+        - name: pricefrom
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: priceto
+          in: query
+          description: Price of a product
+          schema:
+            type: number
+        - name: stockfrom
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: stockto
+          in: query
+          description: Stock of a product
+          schema:
+            type: number
+        - name: hide
+          in: query
+          description: Hide Flag
+          schema:
+            type: boolean
+        - name: freeshipping
+          in: query
+          description: Free Shipping Flag
+          schema:
+            type: boolean
+        - name: onsale
+          in: query
+          description: On Sale Flag
+          schema:
+            type: boolean
+        - name: nontax
+          in: query
+          description: Non-Taxable Flag
+          schema:
+            type: integer
+        - name: notforsale
+          in: query
+          description: Not For Sale Flag
+          schema:
+            type: boolean
+        - name: giftcertificate
+          in: query
+          description: Gift Certificate Flag
+          schema:
+            type: boolean
+        - name: homespecial
+          in: query
+          description: Home Special Flag
+          schema:
+            type: boolean
+        - name: categoryspecial
+          in: query
+          description: Category Special Flag
+          schema:
+            type: boolean
+        - name: nonsearchable
+          in: query
+          description: Non-Searchable Flag
+          schema:
+            type: boolean
+        - name: selfship
+          in: query
+          description: Ships by itself Flag
+          schema:
+            type: boolean
+        - name: rewarddisable
+          in: query
+          description: Disable Rewards Flag
+          schema:
+            type: integer
+        - name: lastupdatestart
+          in: query
+          description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: lastupdateend
+          in: query
+          description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Products/{catalogid}:
+    get:
+      summary: Get a product
+      description: Get a product
+      operationId: Products_GetProduct
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/AdvancedOptions:
+    get:
+      summary: Get the advanced options from a specific Product
+      description: ''
+      operationId: Products_GetAllProductAdvancedOptions
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/AdvancedOptions/{advancedoptioncode}:
+    put:
+      summary: Updates specific advanced options from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: advancedoptioncode
+          in: path
+          description: AdvancedOptionCode
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Products/{catalogid}/Categories:
+    get:
+      summary: Get the categories from a specific Product
+      description: ''
+      operationId: Products_GetAllProductCategories
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Discount:
+    get:
+      summary: Get the discounts from a specific Product
+      description: ''
+      operationId: Products_GetAllProductDiscount
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Discount/{discountid}:
+    put:
+      summary: Updates a specific discount from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: discountid
+          in: path
+          description: DiscountID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Distributors:
+    get:
+      summary: Get the distributors from a specific Product
+      description: ''
+      operationId: Products_GetAllProductDistributors
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/EProducts:
+    get:
+      summary: Get the EProducts from a specific Product
+      description: ''
+      operationId: Products_GetAllProductEProducts
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/EProducts/{filenumber}:
+    put:
+      summary: Updates a specific eproduct from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: filenumber
+          in: path
+          description: FileNumber
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Features:
+    get:
+      summary: Get the features from a specific Product
+      description: ''
+      operationId: Products_GetAllProductFeatures
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Features/{featureid}:
+    put:
+      summary: Updates a specific feature from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: featureid
+          in: path
+          description: FeatureID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Images:
+    get:
+      summary: Get the images from a specific Product
+      description: ''
+      operationId: Products_GetAllProductImages
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Images/{imagegalleryid}:
+    put:
+      summary: Updates a specific image from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: imagegalleryid
+          in: path
+          description: ImageGalleryID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Options:
+    get:
+      summary: Get the options from a specific Product
+      description: ''
+      operationId: Products_GetAllProductOptions
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Options/{optionsetid}:
+    put:
+      summary: Updates specific options from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: optionsetid
+          in: path
+          description: OptionSetID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Related:
+    get:
+      summary: Get the related products from a specific Product
+      description: ''
+      operationId: Products_GetAllProductRelated
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Related/{relatedindexid}:
+    put:
+      summary: Updates a specific related product from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: relatedindexid
+          in: path
+          description: RelatedIndexID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Serials:
+    get:
+      summary: Get the serials from a specific Product
+      description: ''
+      operationId: Products_GetAllProductSerials
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/Serials/{serialid}:
+    put:
+      summary: Updates a specific serial from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: serialid
+          in: path
+          description: FeatureID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/skuinfo:
+    get:
+      summary: Get all products (SKUInfo section only)
+      description: ''
+      operationId: Products_GetAllProductsSKUInfo
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Products/{catalogid}/UpSelling:
+    get:
+      summary: Get the upselling products from a specific Product
+      description: ''
+      operationId: Products_GetAllProductUpSelling
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/{catalogid}/UpSelling/{upsellingindexid}:
+    put:
+      summary: Updates a specific Upselling Item from a specific Product
+      description: ''
+      operationId: Products_Update
+      parameters:
+        - name: catalogid
+          in: path
+          description: Catalogid of the item
+          schema:
+            type: integer
+        - name: upsellingindexid
+          in: path
+          description: UpSellingIndexID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Products/skuinfo:
+    get:
+      summary: Get all products (SKUInfo section only)
+      description: ''
+      operationId: Products_GetAllProductsSKUInfo
+      parameters:
+        - name: catalogid
+          in: query
+          description: Catalog ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+  /3dCartWebAPI/v1/Promotions:
+    get:
+      summary: Get all Promotions
+      description: Get a list of all promotions
+      operationId: Promotions_GetAllPromotions
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: promotion
+          in: query
+          description: Name of the Promotion
+          schema:
+            type: object
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Promotions/{id}:
+    get:
+      summary: Get a Promotion
+      description: Get a Promotion
+      operationId: Promotions_GetPromotion
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Promotions/{promotionid}:
+    put:
+      summary: This method is used to update a single promotion record in the database. The {promotionid} parameter specifies which promotion to update.
+      description: ''
+      operationId: Promotions_Update
+      parameters:
+        - name: promotionid
+          in: path
+          description: Promotion ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/RMA:
+    get:
+      summary: Get all RMAs
+      description: Get a list of all RMAs
+      operationId: RMA_GetAllRMAs
+      parameters:
+        - name: rmastatusid
+          in: query
+          description: Status of the RMA
+          schema:
+            type: integer
+        - name: rmareasonid
+          in: query
+          description: Reason of the RMA
+          schema:
+            type: integer
+        - name: rmamethodid
+          in: query
+          description: Method of the RMA
+          schema:
+            type: integer
+        - name: catalogid
+          in: query
+          description: Catalog ID
+          schema:
+            type: integer
+        - name: sku
+          in: query
+          description: SKU Code of the product
+          schema:
+            type: string
+        - name: datestart
+          in: query
+          description: Date Start (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateend
+          in: query
+          description: Date End (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/RMA/{rmaid}:
+    get:
+      summary: Get a specific RMA
+      description: Get a specific RMA
+      operationId: RMA_GetRMA
+      parameters:
+        - name: rmaid
+          in: path
+          description: RMA ID
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/RMA/{rmaid}/Items:
+    get:
+      summary: Gets the items from a specific RMA
+      description: ''
+      operationId: RMA_GetAllRMAItem
+      parameters:
+        - name: rmaid
+          in: path
+          description: RMA ID
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/StoreSettings:
+    get:
+      summary: Get the Store Settings
+      description: Get the Store Settings
+      operationId: StoreSettings_GetStoreSettings
+      parameters: []
+  /3dCartWebAPI/v1/Webhooks:
+    get:
+      summary: Get all Webhooks
+      description: Get a list of all Webhooks
+      operationId: Webhooks_GetAllWebhooks
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: url
+          in: query
+          description: Webhook URL
+          schema:
+            type: string
+        - name: enabled
+          in: query
+          description: Webhook enabled flag
+          schema:
+            type: boolean
+        - name: format
+          in: query
+          description: Webhook format (JSON | XML)
+          schema:
+            type: string
+        - name: datecreatedstart
+          in: query
+          description: Start date that the webhook was created (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: datecreatedend
+          in: query
+          description: End date that the webhook was created (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateupdatedstart
+          in: query
+          description: Start date that the webhook was updated last time (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: dateupdatedend
+          in: query
+          description: End date that the webhook was updated last time (mm/dd/yyyy hh:mm:ss)
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Webhooks/{id}:
+    get:
+      summary: Get a Webhook
+      description: Get a Webhook
+      operationId: Webhooks_GetWebhook
+      parameters:
+        - name: id
+          in: path
+          description: Permission Id
+          schema:
+            type: integer
+  /3dCartWebAPI/v1/Webhooks/Events:
+    get:
+      summary: Get all Events
+      description: Get a list of all the Events
+      operationId: Webhooks_GetAllEvents
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of items that can be returned
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Starting point for the return data
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Name of the Admin User
+          schema:
+            type: string
+        - name: countonly
+          in: query
+          description: Count the number of rows only
+          schema:
+            type: integer
+components:
+  schemas:
+    Admin:
+      type: object
+      description: ''
+      properties:
+        Admin:
+          type: object
+          description: ''
+          format: null
+    AdminId:
+      type: integer
+      description: database reference = admins.id
+    Username:
+      type: string
+      description: database reference = admins.username
+    Email:
+      type: string
+      description: database reference = admins.email
+    Name:
+      type: string
+      description: database reference = admins.name
+    ExternalId:
+      type: object
+      description: ''
+      properties:
+        ExternalId:
+          type: object
+          description: ''
+          format: null
+    Lastlogin:
+      type: string
+      description: database reference = admins.lastlogin
+    AdminPermissionsList:
+      type: array
+      description: ''
+    AdminPermission:
+      type: object
+      description: ''
+      properties:
+        AdminPermission:
+          type: object
+          description: ''
+          format: null
+    Id:
+      type: integer
+      description: database reference = adminpages.id
+    Section:
+      type: string
+      description: database reference = adminpages.Page
+    Action:
+      type: string
+      description: database reference = adminpages.Action
+    AdminPUT:
+      type: object
+      description: ''
+      properties:
+        AdminPUT:
+          type: object
+          description: ''
+          format: null
+    Password:
+      type: string
+      description: database reference = admins.pass
+    AdminLoginToken:
+      type: object
+      description: ''
+      properties:
+        AdminLoginToken:
+          type: object
+          description: ''
+          format: null
+    Token:
+      type: string
+      description: No database reference.
+    Loginurl:
+      type: string
+      description: No database reference.
+    Expiration:
+      type: string
+      description: No database reference.
+    AdminPOST:
+      type: object
+      description: ''
+      properties:
+        AdminPOST:
+          type: object
+          description: ''
+          format: null
+    Cart:
+      type: object
+      description: ''
+      properties:
+        Cart:
+          type: object
+          description: ''
+          format: null
+    OrderKey:
+      type: string
+      description: database reference = orders.orderkey
+    OrderDate:
+      type: string
+      description: database reference = orders.odate
+    OrderAmount:
+      type: number
+      description: database reference = orders.orderamount
+    OrderWeight:
+      type: number
+      description: Dynamically generated value. No database reference.
+    LastUpdate:
+      type: string
+      description: database reference = orders.last_update
+    CheckoutURL:
+      type: string
+      description: Dynamically generated value. No database reference.
+    CustomerId:
+      type: integer
+      description: database reference = orders.ocustomerid
+    BillingFirstName:
+      type: string
+      description: database reference = orders.ofirstname
+    BillingLastName:
+      type: string
+      description: database reference = orders.olastname
+    BillingCompany:
+      type: string
+      description: database reference = orders.ocompany
+    BillingAddress:
+      type: string
+      description: database reference = orders.oaddress
+    BillingAddress2:
+      type: string
+      description: database reference = orders.oaddress2
+    BillingCity:
+      type: string
+      description: database reference = orders.ocity
+    BillingState:
+      type: string
+      description: database reference = orders.ostate
+    BillingZipCode:
+      type: string
+      description: database reference = orders.ozip
+    BillingCountry:
+      type: string
+      description: database reference = orders.ocountry
+    BillingPhoneNumber:
+      type: string
+      description: database reference = orders.ophone
+    BillingEmail:
+      type: string
+      description: database reference = orders.oemail
+    ShipmentFirstName:
+      type: string
+      description: database reference = orders.oshipfirstname
+    ShipmentLastName:
+      type: string
+      description: database reference = orders.oshiplastname
+    ShipmentCompany:
+      type: string
+      description: database reference = orders.oshipcompany
+    ShipmentAddress:
+      type: string
+      description: database reference = orders.oshipaddress
+    ShipmentAddress2:
+      type: string
+      description: database reference = orders.oshipaddress2
+    ShipmentCity:
+      type: string
+      description: database reference = orders.oshipcity
+    ShipmentState:
+      type: string
+      description: database reference = orders.oshipstate
+    ShipmentZipCode:
+      type: string
+      description: database reference = orders.oshipzip
+    ShipmentCountry:
+      type: string
+      description: database reference = orders.oshipcountry
+    ShipmentPhone:
+      type: string
+      description: database reference = orders.oshipphone
+    ShipmentEmail:
+      type: string
+      description: database reference = orders.oshipemail
+    CartItemList:
+      type: array
+      description: ''
+    CartItem:
+      type: object
+      description: ''
+      properties:
+        CartItem:
+          type: object
+          description: ''
+          format: null
+    CatalogID:
+      type: integer
+      description: database reference = oitems.catalogid
+    CartItemID:
+      type: integer
+      description: database reference = oitems.orderitemid
+    ItemID:
+      type: string
+      description: database reference = oitems.itemid
+    ItemQuantity:
+      type: number
+      description: database reference = oitems.numitems
+    ItemDescription:
+      type: string
+      description: database reference = oitems.itemname
+    ItemUnitPrice:
+      type: number
+      description: database reference = oitems.unitprice
+    ItemOptionPrice:
+      type: number
+      description: database reference = oitems.optionprice
+    ItemDateAdded:
+      type: string
+      description: database reference = oitems.date_added
+    ItemImage1:
+      type: string
+      description: database reference = products.image1
+    CartReduced:
+      type: object
+      description: ''
+      properties:
+        CartReduced:
+          type: object
+          description: ''
+          format: null
+    CartItemPut:
+      type: object
+      description: ''
+      properties:
+        CartItemPut:
+          type: object
+          description: ''
+          format: null
+    CartItemPost:
+      type: object
+      description: ''
+      properties:
+        CartItemPost:
+          type: object
+          description: ''
+          format: null
+    ItemOptions:
+      type: string
+      description: database reference = oitems.options
+    CartItemOption:
+      type: object
+      description: ''
+      properties:
+        CartItemOption:
+          type: object
+          description: ''
+          format: null
+    OptionSetID:
+      type: integer
+      description: database reference = prodfeatures.id
+    OptionID:
+      type: integer
+      description: database reference = prodfeatures_options.id
+    OptionValue:
+      type: number
+      description: database reference = prodfeatures_options.featureprice
+    Category:
+      type: object
+      description: ''
+      properties:
+        Category:
+          type: object
+          description: ''
+          format: null
+    CategoryID:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = category.id
+    CategoryName:
+      type: string
+      description: database reference = category.category_name
+    Link:
+      type: string
+      description: database reference = category.link
+    CategoryDescription:
+      type: string
+      description: database reference = category.category_description
+    CategoryIcon:
+      type: string
+      description: database reference = category.iconimage
+    CategoryMain:
+      type: boolean
+      description: database reference = category.category_main
+    CategoryParent:
+      type: integer
+      description: database reference = category.category_parent
+    Sorting:
+      type: integer
+      description: database reference = category.sorting
+    Hide:
+      type: boolean
+      description: database reference = category.reference
+    UserID:
+      type: string
+      description: database reference = category.userid
+    CategoryMenuGroup:
+      type: integer
+      description: database reference = category.menu_group
+    HomeSpecialCategory:
+      type: boolean
+      description: database reference = category.homespecial
+    FilterCategory:
+      type: boolean
+      description: database reference = category.isFilter
+    TemplateCategoryPage:
+      type: integer
+      description: database reference = category.category_displaytype
+    DefaultProductsSorting:
+      type: integer
+      description: database reference = category.category_defaultsorting
+    SubcategoryColumnsCategorySpecials:
+      type: integer
+      description: database reference = category.category_columnum
+    ProductColumnsCategorySpecials:
+      type: integer
+      description: database reference = category.special_columnum
+    ProductColumnsCategoryGeneralItems:
+      type: integer
+      description: database reference = category.columnum
+    ItemsPerPageCategorySpecialItems:
+      type: integer
+      description: database reference = category.special_numtolist
+    ItemsPerPageCategoryGeneralItems:
+      type: integer
+      description: database reference = category.numtolist
+    DisplayTypeCategorySpecialItems:
+      type: integer
+      description: database reference = category.special_displaytype
+    DisplayTypeCategoryGeneralProducts:
+      type: integer
+      description: database reference = category.displaytype
+    AllowAccess:
+      type: string
+      description: database reference = category.accessgroup
+    OnFailRedirectTo:
+      type: string
+      description: database reference = category.redirectto
+    HideLeftBar:
+      type: boolean
+      description: database reference = category.hide_left
+    HideRightBar:
+      type: boolean
+      description: database reference = category.hide_right
+    HideTopMenu:
+      type: boolean
+      description: database reference = category.hide_framemenu
+    SmartCategories:
+      type: integer
+      description: database reference = category.smartcategory
+    SmartCategoriesSearchKeyword:
+      type: string
+      description: database reference = category.smartcategory_keyword
+    SmartCategoriesLinkTarget:
+      type: string
+      description: database reference = category.link_target
+    TemplateProductPage:
+      type: integer
+      description: database reference = category.listing_displaytype
+    ProductColumnsRelatedProducts:
+      type: integer
+      description: database reference = category.related_columnum
+    ProductColumnsUpsellProducts:
+      type: integer
+      description: database reference = category.upsellitems_columnum
+    DisplayTypeRelatedItems:
+      type: integer
+      description: database reference = category.related_displaytype
+    DisplayTypeUpsellItems:
+      type: integer
+      description: database reference = category.upsellitems_displaytype
+    OptionSetList:
+      type: array
+      description: ''
+    Title:
+      type: string
+      description: database reference = category.category_title
+    CustomFileName:
+      type: string
+      description: database reference = category.filename
+    MetaTags:
+      type: string
+      description: database reference = category.category_meta
+    CategoryHeader:
+      type: string
+      description: database reference = category.category_header
+    CategoryFooter:
+      type: string
+      description: database reference = category.category_footer
+    AdditionalKeywords:
+      type: string
+      description: database reference = category.keywords
+    CategoryExternalIdsList:
+      type: array
+      description: ''
+    OptionSet:
+      type: object
+      description: ''
+      properties:
+        OptionSet:
+          type: object
+          description: ''
+          format: null
+    OptionSetName:
+      type: string
+      description: database reference = prodfeatures.featurecaption
+    OptionSorting:
+      type: number
+      description: database reference = prodfeatures.sorting
+    OptionRequired:
+      type: boolean
+      description: database reference = prodfeatures.featurerequired
+    OptionType:
+      type: string
+      description: database reference = prodfeatures.featuretype
+    OptionURL:
+      type: string
+      description: database reference = prodfeatures.url
+    OptionAdditionalInformation:
+      type: string
+      description: database reference = prodfeatures.info
+    OptionSizeLimit:
+      type: integer
+      description: database reference = prodfeatures.textlimit
+    OptionList:
+      type: array
+      description: ''
+    CategoryExternalId:
+      type: object
+      description: ''
+      properties:
+        CategoryExternalId:
+          type: object
+          description: ''
+          format: null
+    ExternalId1:
+      type: string
+      description: database reference = category_external_id.externalid1
+    ExternalIdType:
+      type: string
+      description: database reference = category_external_id.externalidtype
+    Options:
+      type: object
+      description: ''
+      properties:
+        Options:
+          type: object
+          description: ''
+          format: null
+    OptionName:
+      type: string
+      description: database reference = prodfeatures_options.featurename
+    OptionSelected:
+      type: boolean
+      description: database reference = prodfeatures_options.selected
+    OptionHide:
+      type: boolean
+      description: database reference = prodfeatures_options.hidden
+    OptionPartNumber:
+      type: string
+      description: database reference = prodfeatures_options.partnumber
+    OptionImagePath:
+      type: string
+      description: database reference = prodfeatures_options.imagepath
+    OptionBundleCatalogId:
+      type: integer
+      description: database reference = prodfeatures_options.optcatalogid
+    OptionBundleQuantity:
+      type: integer
+      description: database reference = prodfeatures_options.qty
+    CRM:
+      type: object
+      description: ''
+      properties:
+        CRM:
+          type: object
+          description: ''
+          format: null
+    CrmID:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = CRM.id
+    DateOpened:
+      type: string
+      description: database reference = CRM.datentime
+    DateLastAction:
+      type: string
+      description: database reference = CRM.lastactiondatentime
+    Subject:
+      type: string
+      description: database reference = CRM.subject
+    DepartmentID:
+      type: integer
+      description: database reference = CRM.departmentid
+    StatusID:
+      type: integer
+      description: database reference = CRM.status
+    CustomerName:
+      type: string
+      description: database reference = CRM.customer
+    CustomerEmail:
+      type: string
+      description: database reference = CRM.custemail
+    CustomerPhone:
+      type: string
+      description: database reference = CRM.phone
+    CustomerIpAddress:
+      type: string
+      description: database reference = CRM.custip
+    OrderID:
+      type: integer
+      description: database reference = CRM.orderid
+    ProductId:
+      type: integer
+      description: database reference = CRM.productid
+    CrmMessageList:
+      type: array
+      description: ''
+    CrmMessage:
+      type: object
+      description: ''
+      properties:
+        CrmMessage:
+          type: object
+          description: ''
+          format: null
+    MessageId:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = CRM_messages.id
+    DateCreated:
+      type: string
+      description: database reference = CRM_messages.datentime
+    Message:
+      type: string
+      description: database reference = CRM_messages.message
+    Sender:
+      type: integer
+      description: database reference = CRM_messages.sender
+    SenderName:
+      type: string
+      description: database reference = CRM_messages.sendername
+    SenderEmail:
+      type: string
+      description: database reference = CRM_messages.senderemail
+    CrmFileList:
+      type: array
+      description: ''
+    CrmFile:
+      type: object
+      description: ''
+      properties:
+        CrmFile:
+          type: object
+          description: ''
+          format: null
+    FileId:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = CRM_files.crmFileID
+    FileName:
+      type: string
+      description: database reference = CRM_files.FileName
+    IsAdminUploaded:
+      type: boolean
+      description: database reference = CRM_files.isAdminUploaded
+    CrmSavedReply:
+      type: object
+      description: ''
+      properties:
+        CrmSavedReply:
+          type: object
+          description: ''
+          format: null
+    CrmStatus:
+      type: object
+      description: ''
+      properties:
+        CrmStatus:
+          type: object
+          description: ''
+          format: null
+    StatusName:
+      type: string
+      description: database reference = CRM_status.statustext
+    CrmDepartment:
+      type: object
+      description: ''
+      properties:
+        CrmDepartment:
+          type: object
+          description: ''
+          format: null
+    Visible:
+      type: boolean
+      description: database reference = CRM_Department.visible
+    CustomerGroup:
+      type: object
+      description: ''
+      properties:
+        CustomerGroup:
+          type: object
+          description: ''
+          format: null
+    CustomerGroupID:
+      type: integer
+      description: Primary key. database reference = discount_groups.id
+    Description:
+      type: string
+      description: database reference = discount_groups.Description
+    MinimumOrder:
+      type: number
+      description: database reference = discount_groups.minimumorder
+    NonTaxable:
+      type: boolean
+      description: database reference = discount_groups.nontaxable
+    AllowRegistration:
+      type: boolean
+      description: database reference = discount_groups.allow_registration
+    DisableRewardPoints:
+      type: boolean
+      description: database reference = discount_groups.disable_reward_points
+    AutoApprove:
+      type: boolean
+      description: database reference = discount_groups.autoapprove
+    RegistrationMessage:
+      type: string
+      description: database reference = discount_groups.registration_message
+    PriceLevel:
+      type: integer
+      description: database reference = discount_groups.price_level
+    Customer:
+      type: object
+      description: ''
+      properties:
+        Customer:
+          type: object
+          description: ''
+          format: null
+    BillingAddress1:
+      type: string
+      description: database reference = customers.billing_address
+    BillingTaxID:
+      type: string
+      description: database reference = customers.accountno
+    ShippingCompany:
+      type: string
+      description: database reference = customers.shipping_company
+    ShippingFirstName:
+      type: string
+      description: database reference = customers.shipping_firstname
+    ShippingLastName:
+      type: string
+      description: database reference = customers.shipping_lastname
+    ShippingAddress1:
+      type: string
+      description: database reference = customers.shipping_address
+    ShippingAddress2:
+      type: string
+      description: database reference = customers.shipping_address2
+    ShippingCity:
+      type: string
+      description: database reference = customers.shipping_city
+    ShippingState:
+      type: string
+      description: database reference = customers.shipping_state
+    ShippingZipCode:
+      type: string
+      description: database reference = customers.shipping_zip
+    ShippingCountry:
+      type: string
+      description: database reference = customers.shipping_country
+    ShippingPhoneNumber:
+      type: string
+      description: database reference = customers.shipping_phone
+    ShippingAddressType:
+      type: integer
+      description: database reference = customers.oshipaddresstype
+    Enabled:
+      type: boolean
+      description: database reference = customers.custenabled
+    MailList:
+      type: boolean
+      description: database reference = customers.maillist
+    DisableBillingSameAsShipping:
+      type: boolean
+      description: ''
+    Comments:
+      type: string
+      description: database reference = customers.comments
+    AdditionalField1:
+      type: string
+      description: database reference = customers.additional_field1
+    AdditionalField2:
+      type: string
+      description: database reference = customers.additional_field2
+    AdditionalField3:
+      type: string
+      description: database reference = customers.additional_field3
+    TotalStoreCredit:
+      type: number
+      description: computed column ==&gt; sum(customer_credit.credit) of all records
+    ResetPassword:
+      type: boolean
+      description: database reference = customers.reset_pass
+    Distributor:
+      type: object
+      description: ''
+      properties:
+        Distributor:
+          type: object
+          description: ''
+          format: null
+    DistributorID:
+      type: integer
+      description: database reference = distributors.id
+    CompanyName:
+      type: string
+      description: database reference = distributors.company
+    ContactName:
+      type: string
+      description: database reference = distributors.contact
+    Address:
+      type: string
+      description: database reference = distributors.address
+    Address2:
+      type: string
+      description: database reference = distributors.address2
+    City:
+      type: string
+      description: database reference = distributors.city
+    State:
+      type: string
+      description: database reference = distributors.state
+    Zip:
+      type: string
+      description: database reference = distributors.zip
+    Country:
+      type: string
+      description: database reference = distributors.country
+    Phone:
+      type: string
+      description: database reference = distributors.telephone
+    Fax:
+      type: string
+      description: database reference = distributors.fax
+    NotifyOnNewOrder:
+      type: boolean
+      description: database reference = distributors.isdropshipper
+    NotifyOnNewOrderEmailSubject:
+      type: string
+      description: database reference = distributors.emailsubject
+    NotifyOnNewOrderEmailMessage:
+      type: string
+      description: database reference = distributors.emailmessage
+    IsDropShipper:
+      type: boolean
+      description: database reference = distributors.iswarehouse
+    NotifyOnCancelledOrder:
+      type: boolean
+      description: database reference = distributors.sendcancelemail
+    NotifyOnCancelledOrderEmailSubject:
+      type: string
+      description: database reference = distributors.cancelemailsubject
+    NotifyOnCancelledOrderEmailMessage:
+      type: string
+      description: database reference = distributors.cancelemailmessage
+    POStyle:
+      type: integer
+      description: database reference = distributors.PO_Style
+    POEmailNotification:
+      type: boolean
+      description: database reference = distributors.PO_IsEmailNotification
+    POShippingInfo:
+      type: string
+      description: database reference = distributors.PO_shipping_info
+    POPaymentInfo:
+      type: string
+      description: database reference = distributors.PO_payment_info
+    POAdditionalNotes:
+      type: string
+      description: database reference = distributors.PO_additional_notes
+    POEmailSubject:
+      type: string
+      description: database reference = distributors.PO_email_subject
+    FrontendScripts:
+      type: object
+      description: ''
+      properties:
+        FrontendScripts:
+          type: object
+          description: ''
+          format: null
+    FrontendScriptID:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = FrontendScripts.id
+    Placement:
+      type: string
+      description: (BODY | HEAD) database reference = FrontendScripts.placement
+    Code:
+      type: string
+      description: database reference = FrontendScripts.code
+    GiftRegistry:
+      type: object
+      description: ''
+      properties:
+        GiftRegistry:
+          type: object
+          description: ''
+          format: null
+    CustomerAddressBook:
+      type: ''
+      description: ''
+      properties:
+        CustomerAddressBook:
+          type: object
+          description: Reference
+          format: null
+    GiftRegistryID:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = WSH_wishlist.WSH_Id
+    Created:
+      type: string
+      description: database reference = WSH_wishlist.WSH_Created
+    Expires:
+      type: string
+      description: database reference = WSH_wishlist.WSH_Expiration
+    Event:
+      type: object
+      description: ''
+      properties:
+        Event:
+          type: object
+          description: ''
+          format: null
+    ShipToAddress:
+      type: boolean
+      description: database reference = WSH_wishlist.WSH_ShipMyAddress
+    Sold:
+      type: integer
+      description: 'calculated field:'
+    Items:
+      type: integer
+      description: 'calculated field:'
+    GiftRegistryItemList:
+      type: array
+      description: ''
+    CustomerAddressId:
+      type: integer
+      description: database reference = customers_addressbook.CustomerAddressId
+    FirstName:
+      type: string
+      description: database reference = customers_addressbook.shipping_firstname
+    LastName:
+      type: string
+      description: database reference = customers_addressbook.shipping_lastname
+    Address1:
+      type: string
+      description: database reference = customers_addressbook.shipping_address
+    ZipCode:
+      type: string
+      description: database reference = customers_addressbook.shipping_zip
+    Company:
+      type: string
+      description: database reference = customers_addressbook.shipping_company
+    PhoneNumber:
+      type: string
+      description: database reference = customers_addressbook.shipping_phone
+    GiftRegistryItem:
+      type: object
+      description: ''
+      properties:
+        GiftRegistryItem:
+          type: object
+          description: ''
+          format: null
+    SKU:
+      type: string
+      description: database reference = WSI_WishlistItems.itemid
+    ItemName:
+      type: string
+      description: database reference = WSI_WishlistItems.itemname
+    Listed:
+      type: integer
+      description: database reference = WSI_WishlistItems.numitems
+    Price:
+      type: number
+      description: database reference = WSI_WishlistItems.unitprice
+    Subtotal:
+      type: number
+      description: calculated
+    SoldOffline:
+      type: integer
+      description: database reference = WSI_WishlistItems.numitems
+    Manufacturer:
+      type: object
+      description: ''
+      properties:
+        Manufacturer:
+          type: object
+          description: ''
+          format: null
+    ManufacturerID:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = manufacturer.id
+    ManufacturerName:
+      type: string
+      description: database reference = manufacturer.manufacturer
+    Logo:
+      type: string
+      description: database reference = manufacturer.logo
+    Header:
+      type: string
+      description: database reference = manufacturer.header
+    Website:
+      type: string
+      description: database reference = manufacturer.website
+    PageTitle:
+      type: string
+      description: database reference = manufacturer.title
+    RedirectURL:
+      type: string
+      description: database reference = manufacturer.link
+    Order:
+      type: object
+      description: ''
+      properties:
+        Order:
+          type: object
+          description: ''
+          format: null
+    InvoiceNumberPrefix:
+      type: string
+      description: database reference = orders.invoicenum_prefix
+    InvoiceNumber:
+      type: integer
+      description: database reference = orders.invoicenum
+    OrderStatusID:
+      type: integer
+      description: database reference = orders.order_status
+    SalesPerson:
+      type: string
+      description: database reference = orders.salesperson
+    ContinueURL:
+      type: string
+      description: Dynamically generated value. No database reference.
+    AlternateOrderID:
+      type: string
+      description: Alternate OrderID
+    OrderType:
+      type: string
+      description: OrderType
+    PaymentTokenID:
+      type: integer
+      description: PaymentTokenID
+    BillingPaymentMethod:
+      type: string
+      description: ''
+    BillingOnLinePayment:
+      type: boolean
+      description: ''
+    BillingPaymentMethodID:
+      type: integer
+      description: database reference = customers_pmntprofiles.gateway_id / customers_pmntprofiles.gateway
+    ShipmentList:
+      type: array
+      description: ''
+    OrderItemList:
+      type: array
+      description: ''
+    PromotionList:
+      type: array
+      description: ''
+    OrderDiscount:
+      type: number
+      description: OrderDiscountCoupon + OrderDiscountPromotion (Readonly)
+    OrderDiscountCoupon:
+      type: number
+      description: database reference = orders.coupondiscount (automatic promotion)
+    OrderDiscountPromotion:
+      type: number
+      description: database reference = orders.odiscount (coupon promotion)
+    SalesTax:
+      type: number
+      description: database reference = orders.otax
+    SalesTax2:
+      type: number
+      description: database reference = orders.otax2
+    SalesTax3:
+      type: number
+      description: database reference = orders.otax3
+    AffiliateCommission:
+      type: number
+      description: database reference = orders.affiliate_commission
+    TransactionList:
+      type: array
+      description: ''
+    CardType:
+      type: string
+      description: database reference = orders.ocardtype
+    CardNumber:
+      type: string
+      description: database reference = orders.ocardno
+    CardName:
+      type: string
+      description: database reference = orders.ocardname
+    CardExpirationMonth:
+      type: string
+      description: database reference = orders.ocardexpiresmonth
+    CardExpirationYear:
+      type: string
+      description: database reference = orders.ocardexpiresyear
+    CardIssueNumber:
+      type: string
+      description: database reference = orders.ocardissuenum
+    CardStartMonth:
+      type: string
+      description: database reference = orders.ocardstartmonth
+    CardStartYear:
+      type: string
+      description: database reference = orders.ocardstartyear
+    CardAddress:
+      type: string
+      description: database reference = orders.ocardaddress
+    CardVerification:
+      type: string
+      description: database reference = orders.ocardverification
+    OfflinePaymentFieldList:
+      type: array
+      description: ''
+    RewardPoints:
+      type: integer
+      description: database reference = products.reward_points
+    QuestionList:
+      type: array
+      description: ''
+    Referer:
+      type: string
+      description: database reference = orders.referer
+    IP:
+      type: string
+      description: database reference = orders.ip
+    CustomerComments:
+      type: string
+      description: database reference = orders.ocomment
+    InternalComments:
+      type: string
+      description: database reference = orders.ointernalcomment
+    ExternalComments:
+      type: string
+      description: database reference = orders.oexternalcomment
+    Shipment:
+      type: object
+      description: ''
+      properties:
+        Shipment:
+          type: object
+          description: ''
+          format: null
+    ShipmentID:
+      type: integer
+      description: database reference = orders_shipments.id
+    ShipmentLastUpdate:
+      type: string
+      description: database reference = orders_shipments.last_update
+    ShipmentBoxes:
+      type: integer
+      description: database reference = orders_shipments.oboxes
+    ShipmentInternalComment:
+      type: string
+      description: database reference = orders_shipments.ointernalcomment
+    ShipmentOrderStatus:
+      type: integer
+      description: database reference = orders_shipments.order_status
+    ShipmentAlias:
+      type: string
+      description: database reference = orders_shipments.oshipalias
+    ShipmentCost:
+      type: number
+      description: database reference = orders_shipments.oshipcost
+    ShipmentMethodID:
+      type: integer
+      description: database reference = orders_shipments.shipping_id
+    ShipmentMethodName:
+      type: string
+      description: database reference = orders_shipments.oshipmethod
+    ShipmentShippedDate:
+      type: string
+      description: database reference = orders_shipments.oshippeddate
+    ShipmentTax:
+      type: number
+      description: database reference = orders_shipments.otax
+    ShipmentWeight:
+      type: number
+      description: database reference = orders_shipments.oweight
+    ShipmentTrackingCode:
+      type: string
+      description: database reference = orders_shipments.trackingcode
+    ShipmentUserID:
+      type: string
+      description: database reference = orders_shipments.userid
+    ShipmentNumber:
+      type: integer
+      description: database reference = orders_shipments.shipment_number
+    ShipmentAddressTypeID:
+      type: integer
+      description: database reference = orders_shipments.oshipaddresstype
+    OrderItem:
+      type: object
+      description: ''
+      properties:
+        OrderItem:
+          type: object
+          description: ''
+          format: null
+    ItemIndexID:
+      type: integer
+      description: database reference = oitems.orderitemid
+    ItemShipmentID:
+      type: integer
+      description: database reference = oitems.shipment_id
+    ItemWarehouseID:
+      type: integer
+      description: database reference = oitems.warehouseID
+    ItemWeight:
+      type: number
+      description: database reference = oitems.weight
+    ItemAdditionalField1:
+      type: string
+      description: database reference = oitems.additional_field1
+    ItemAdditionalField2:
+      type: string
+      description: database reference = oitems.additional_field2
+    ItemAdditionalField3:
+      type: string
+      description: database reference = oitems.additional_field3
+    ItemPageAdded:
+      type: string
+      description: database reference = oitems.page_added
+    ItemAvailability:
+      type: string
+      description: database reference = oitems.itemdescription
+    ItemUnitCost:
+      type: number
+      description: database reference = oitems.unitcost
+    ItemUnitStock:
+      type: number
+      description: database reference = oitems.unitstock
+    ItemCatalogIDOptions:
+      type: string
+      description: database reference = oitems.catalogidoptions
+    ItemSerial:
+      type: string
+      description: database reference = serials_used.catalogidoptions
+    ItemImage2:
+      type: string
+      description: database reference = products.image2
+    ItemImage3:
+      type: string
+      description: database reference = products.image3
+    ItemImage4:
+      type: string
+      description: database reference = products.image4
+    ItemWarehouseLocation:
+      type: string
+      description: database reference = products.warehouse_location
+    ItemWarehouseBin:
+      type: string
+      description: database reference = products.warehouse_bin
+    ItemWarehouseAisle:
+      type: string
+      description: database reference = products.warehouse_aisle
+    ItemWarehouseCustom:
+      type: string
+      description: database reference = products.warehouse_custom
+    RecurringOrderFrequency:
+      type: integer
+      description: database reference = oitems.recurring_order_frequency
+    Promotion:
+      type: object
+      description: ''
+      properties:
+        Promotion:
+          type: object
+          description: ''
+          format: null
+    PromotionID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = promotions.id
+    PromotionName:
+      type: string
+      description: database reference = promotions.promotion_name
+    Coupon:
+      type: string
+      description: database reference = order_discounts.coupon
+    DiscountAmount:
+      type: number
+      description: database reference = order_discounts.discount_amount
+    Transaction:
+      type: object
+      description: ''
+      properties:
+        Transaction:
+          type: object
+          description: ''
+          format: null
+    TransactionIndexID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = transactions.id
+    TransactionID:
+      type: string
+      description: database reference = transactions.transactionid
+    TransactionDateTime:
+      type: string
+      description: database reference = transactions.datetime
+    TransactionType:
+      type: string
+      description: database reference = transactions.ttype
+    TransactionMethod:
+      type: string
+      description: database reference = transactions.paymenttype
+    TransactionAmount:
+      type: number
+      description: database reference = transactions.amount
+    TransactionApproval:
+      type: string
+      description: database reference = transactions.approvalcode
+    TransactionReference:
+      type: string
+      description: database reference = transactions.reference
+    TransactionGatewayID:
+      type: integer
+      description: database reference = transactions.gwid
+    TransactionCVV2:
+      type: string
+      description: database reference = transactions.cvv2
+    TransactionAVS:
+      type: string
+      description: database reference = transactions.avs
+    TransactionResponseText:
+      type: string
+      description: database reference = transactions.responsetext
+    TransactionResponseCode:
+      type: string
+      description: database reference = transactions.responsecode
+    TransactionCaptured:
+      type: integer
+      description: database reference = transactions.captured
+    OfflinePaymentField:
+      type: object
+      description: ''
+      properties:
+        OfflinePaymentField:
+          type: object
+          description: ''
+          format: null
+    InputName:
+      type: string
+      description: database reference = offline_payments_fields.InputName
+    InputValue:
+      type: string
+      description: database reference = payments_fields.input_value
+    Question:
+      type: object
+      description: ''
+      properties:
+        Question:
+          type: object
+          description: ''
+          format: null
+    QuestionAnswerIndexID:
+      type: integer
+      description: database reference = order_questions.id
+    QuestionID:
+      type: integer
+      description: database reference = order_questions.questionid
+    QuestionTitle:
+      type: string
+      description: database reference = checkout_questions.Question
+    QuestionAnswer:
+      type: string
+      description: database reference = order_questions.answer
+    QuestionType:
+      type: string
+      description: database reference = checkout_questions.qtype
+    QuestionCheckoutStep:
+      type: integer
+      description: database reference = checkout_questions.checkoutstep
+    QuestionSorting:
+      type: integer
+      description: database reference = checkout_questions.sorting
+    QuestionDiscountGroup:
+      type: integer
+      description: database reference = checkout_questions.discountgroup
+    OrderStatus:
+      type: object
+      description: ''
+      properties:
+        OrderStatus:
+          type: object
+          description: ''
+          format: null
+    StatusDefinition:
+      type: string
+      description: database reference = Order_Status.StatusDefinition
+    StatusText:
+      type: string
+      description: database reference = Order_Status.StatusText
+    PaymentToken:
+      type: object
+      description: ''
+      properties:
+        PaymentToken:
+          type: object
+          description: ''
+          format: null
+    CustomerProfileID:
+      type: string
+      description: database reference = customers_pmntprofiles.custProfileId
+    PaymentProfileID:
+      type: string
+      description: database reference = customers_pmntprofiles.custPmntProfileId
+    CardLast4:
+      type: integer
+      description: database reference = customers_pmntprofiles.cardlastdigits
+    CardExpMonth:
+      type: integer
+      description: database reference = customers_pmntprofiles.cardexp
+    CardExpYear:
+      type: integer
+      description: database reference = customers_pmntprofiles.cardexp
+    GatewayName:
+      type: string
+      description: database reference = customers_pmntprofiles.gateway
+    GatewayID:
+      type: integer
+      description: database reference = customers_pmntprofiles.gateway_id
+    Product:
+      type: object
+      description: ''
+      properties:
+        Product:
+          type: object
+          description: ''
+          format: null
+    SKUInfo:
+      type: ''
+      description: ''
+    MFGID:
+      type: string
+      description: database reference = products.mfgid
+    ShortDescription:
+      type: string
+      description: database reference = products.description
+    DistributorList:
+      type: array
+      description: ''
+    GTIN:
+      type: string
+      description: database reference = products.gtin
+    CategoryList:
+      type: array
+      description: ''
+    ExternalIdsList:
+      type: array
+      description: ''
+    NotForSale:
+      type: boolean
+      description: database reference = products.notforsale
+    GiftCertificate:
+      type: boolean
+      description: database reference = products.giftcertificate
+    HomeSpecial:
+      type: boolean
+      description: database reference = products.homespecial
+    CategorySpecial:
+      type: boolean
+      description: database reference = products.categoryspecial
+    NonSearchable:
+      type: boolean
+      description: database reference = products.nonsearchable
+    GiftWrapItem:
+      type: boolean
+      description: database reference = products.giftwrap_option
+    ShipCost:
+      type: number
+      description: database reference = products.shipcost
+    Weight:
+      type: number
+      description: database reference = products.weight
+    Height:
+      type: number
+      description: database reference = products.height
+    Width:
+      type: number
+      description: database reference = products.width
+    Depth:
+      type: number
+      description: database reference = products.depth
+    SelfShip:
+      type: boolean
+      description: database reference = products.self_ship
+    FreeShipping:
+      type: boolean
+      description: database reference = products.free_shipping
+    RedeemPoints:
+      type: integer
+      description: database reference = products.reward_redeem
+    DisableRewards:
+      type: boolean
+      description: database reference = products.reward_disable
+    StockAlert:
+      type: integer
+      description: database reference = products.stock_alert
+    ReorderQuantity:
+      type: integer
+      description: database reference = products.qty_reorder
+    InStockMessage:
+      type: string
+      description: database reference = products.instock_message
+    OutOfStockMessage:
+      type: string
+      description: database reference = products.outofstock_message
+    BackOrderMessage:
+      type: string
+      description: database reference = products.backorder_message
+    InventoryControl:
+      type: integer
+      description: database reference = products.show_out_stock
+    WarehouseLocation:
+      type: string
+      description: database reference = products.warehouse_location
+    WarehouseBin:
+      type: string
+      description: database reference = products.warehouse_bin
+    WarehouseAisle:
+      type: string
+      description: database reference = products.warehouse_aisle
+    WarehouseCustom:
+      type: string
+      description: database reference = products.warehouse_custom
+    Keywords:
+      type: string
+      description: database reference = products.keywords
+    ExtraField1:
+      type: string
+      description: database reference = products.extra_field_1
+    ExtraField2:
+      type: string
+      description: database reference = products.extra_field_2
+    ExtraField3:
+      type: string
+      description: database reference = products.extra_field_3
+    ExtraField4:
+      type: string
+      description: database reference = products.extra_field_4
+    ExtraField5:
+      type: string
+      description: database reference = products.extra_field_5
+    ExtraField6:
+      type: string
+      description: database reference = products.extra_field_6
+    ExtraField7:
+      type: string
+      description: database reference = products.extra_field_7
+    ExtraField8:
+      type: string
+      description: database reference = products.extra_field_8
+    ExtraField9:
+      type: string
+      description: database reference = products.extra_field_9
+    ExtraField10:
+      type: string
+      description: database reference = products.extra_field_10
+    ExtraField11:
+      type: string
+      description: database reference = products.extra_field_11
+    ExtraField12:
+      type: string
+      description: database reference = products.extra_field_12
+    ExtraField13:
+      type: string
+      description: database reference = products.extra_field_13
+    FeatureList:
+      type: array
+      description: ''
+    PluginList:
+      type: object
+      description: ''
+    SampleEnable:
+      type: boolean
+      description: database reference = products.sample_enable
+    SampleName:
+      type: string
+      description: database reference = products.sample_name
+    SampleSKUPrefix:
+      type: string
+      description: database reference = products.sample_sku_prefix
+    SamplePrice:
+      type: number
+      description: database reference = products.sample_price
+    SampleWeight:
+      type: number
+      description: database reference = products.sample_weight
+    ReviewAverage:
+      type: number
+      description: database reference = products.review_average
+    ReviewCount:
+      type: integer
+      description: database reference = products.review_count
+    MainImageFile:
+      type: string
+      description: database reference = products.
+    MainImageCaption:
+      type: string
+      description: database reference = products.imagecaption1
+    ThumbnailFile:
+      type: string
+      description: database reference = products.thumbnail
+    MediaFile:
+      type: string
+      description: database reference = products.realmedia
+    AdditionalImageFile2:
+      type: string
+      description: database reference = products.image2
+    AdditionalImageCaption2:
+      type: string
+      description: database reference = products.imagecaption2
+    AdditionalImageFile3:
+      type: string
+      description: database reference = products.image3
+    AdditionalImageCaption3:
+      type: string
+      description: database reference = products.imagecaption3
+    AdditionalImageFile4:
+      type: string
+      description: database reference = products.image4
+    AdditionalImageCaption4:
+      type: string
+      description: database reference = products.imagecaption4
+    ImageGalleryList:
+      type: array
+      description: ''
+    AdvancedOptionList:
+      type: array
+      description: ''
+    RelatedProductList:
+      type: array
+      description: ''
+    UpSellingItemList:
+      type: array
+      description: ''
+    DiscountList:
+      type: array
+      description: ''
+    DoNotUseCategoryOptions:
+      type: boolean
+      description: database reference = products.usecatoptions
+    ListingTemplateID:
+      type: integer
+      description: database reference = products.listing_displaytype
+    ListingTemplateName:
+      type: string
+      description: Dynamically generated field. No database reference.
+    LoginRequiredOptionID:
+      type: integer
+      description: database reference = products.loginlevel
+    LoginRequiredOptionName:
+      type: string
+      description: Dynamically generated field. No database reference.
+    LoginRequiredOptionRedirectTo:
+      type: string
+      description: database reference = products.redirectto
+    AllowAccessCustomerGroupID:
+      type: integer
+      description: database reference = products.accessgroup
+    AllowAccessCustomerGroupName:
+      type: string
+      description: Dynamically generated field. No database reference.
+    RMAMaxPeriod:
+      type: string
+      description: database reference = products.rma_maxperiod
+    CanonicalUrl:
+      type: string
+      description: database reference = products.canonical_url
+    TaxCode:
+      type: string
+      description: database reference = products.tax_code
+    DisplayText:
+      type: string
+      description: database reference = products.displaytext
+    MinimumQuantity:
+      type: number
+      description: database reference = products.minimumorder
+    MaximumQuantity:
+      type: number
+      description: database reference = products.maximumorder
+    AllowOnlyMultiples:
+      type: boolean
+      description: database reference = products.minorderpkg
+    AllowFractionalQuantity:
+      type: boolean
+      description: database reference = products.fractional_qty
+    QuantityOptions:
+      type: string
+      description: database reference = products.qtyoptions
+    GroupOptionsForQuantityPricing:
+      type: boolean
+      description: database reference = products.pricing_groupopt
+    ApplyQuantityDiscountToOptions:
+      type: boolean
+      description: database reference = products.qtydiscount_opt
+    EnableMakeAnOfferFeature:
+      type: boolean
+      description: database reference = products.makeanoffer_enabled
+    MinimumAcceptableOffer:
+      type: string
+      description: database reference = products.makeanoffer_price
+    PriceLevel1:
+      type: number
+      description: database reference = products.price_1
+    PriceLevel1Hide:
+      type: boolean
+      description: database reference = products.hide_1
+    PriceLevel2:
+      type: number
+      description: database reference = products.price_2
+    PriceLevel2Hide:
+      type: boolean
+      description: database reference = products.hide_2
+    PriceLevel3:
+      type: number
+      description: database reference = products.price_3
+    PriceLevel3Hide:
+      type: boolean
+      description: database reference = products.hide_3
+    PriceLevel4:
+      type: number
+      description: database reference = products.price_4
+    PriceLevel4Hide:
+      type: boolean
+      description: database reference = products.hide_4
+    PriceLevel5:
+      type: number
+      description: database reference = products.price_5
+    PriceLevel5Hide:
+      type: boolean
+      description: database reference = products.hide_5
+    PriceLevel6:
+      type: number
+      description: database reference = products.price_6
+    PriceLevel6Hide:
+      type: boolean
+      description: database reference = products.hide_6
+    PriceLevel7:
+      type: number
+      description: database reference = products.price_7
+    PriceLevel7Hide:
+      type: boolean
+      description: database reference = products.hide_7
+    PriceLevel8:
+      type: number
+      description: database reference = products.price_8
+    PriceLevel8Hide:
+      type: boolean
+      description: database reference = products.hide_8
+    PriceLevel9:
+      type: number
+      description: database reference = products.price_9
+    PriceLevel9Hide:
+      type: boolean
+      description: database reference = products.hide_9
+    PriceLevel10:
+      type: number
+      description: database reference = products.price_10
+    PriceLevel10Hide:
+      type: boolean
+      description: database reference = products.hide_10
+    BuyButtonLink:
+      type: string
+      description: Dynamically generated field. No database reference.
+    ProductLink:
+      type: string
+      description: Dynamically generated field. No database reference.
+    RedirectLink:
+      type: string
+      description: database reference = products.link
+    SpecialInstructions:
+      type: string
+      description: database reference = products.eproduct_instructions
+    AssignKey:
+      type: boolean
+      description: database reference = products.eproduct_serial
+    ReUseKeys:
+      type: boolean
+      description: database reference = products.eproduct_reuseserial
+    SerialList:
+      type: array
+      description: ''
+    EProductList:
+      type: array
+      description: ''
+    ProductSKU:
+      type: object
+      description: ''
+      properties:
+        ProductSKU:
+          type: object
+          description: ''
+          format: null
+    Cost:
+      type: number
+      description: database reference = products.cost
+    Currency:
+      type: string
+      description: Dynamically generated field. No database reference.
+    RetailPrice:
+      type: number
+      description: database reference = products.price2
+    SalePrice:
+      type: number
+      description: database reference = products.saleprice
+    OnSale:
+      type: boolean
+      description: database reference = products.onsale
+    Stock:
+      type: number
+      description: database reference = products.stock
+    ProductDistributor:
+      type: object
+      description: ''
+      properties:
+        ProductDistributor:
+          type: object
+          description: ''
+          format: null
+    DistributorName:
+      type: string
+      description: database reference = distributor.company
+    DistributorItemCost:
+      type: number
+      description: database reference = product_distributor.cost
+    DistributorItemID:
+      type: string
+      description: database reference = product_distributor.itemid
+    DistributorStockID:
+      type: string
+      description: database reference = product_distributor.stockid
+    ProductCategory:
+      type: object
+      description: ''
+      properties:
+        ProductCategory:
+          type: object
+          description: ''
+          format: null
+    AdvancedOptionSufix:
+      type: string
+      description: database reference = product_external_id.ao_suffix
+    ExternalId2:
+      type: string
+      description: database reference = product_external_id.externalid2
+    Feature:
+      type: object
+      description: ''
+      properties:
+        Feature:
+          type: object
+          description: ''
+          format: null
+    FeatureID:
+      type: integer
+      description: database reference = prod_addfeatures.ID
+    FeatureTitle:
+      type: string
+      description: database reference = prod_addfeatures.ProdFeatureTitle
+    FeatureDescription:
+      type: string
+      description: database reference = prod_addfeatures.ProdFeatureTitle
+    ImageGallery:
+      type: object
+      description: ''
+      properties:
+        ImageGallery:
+          type: object
+          description: ''
+          format: null
+    ImageGalleryID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = product_images.id
+    ImageGalleryFile:
+      type: string
+      description: database reference = product_images.image
+    ImageGalleryCaption:
+      type: string
+      description: database reference = product_images.caption
+    ImageGallerySorting:
+      type: integer
+      description: database reference = product_images.sorting
+    AdvancedOption:
+      type: object
+      description: ''
+      properties:
+        AdvancedOption:
+          type: object
+          description: ''
+          format: null
+    AdvancedOptionCode:
+      type: string
+      description: database reference = options_Advanced.AO_Code
+    AdvancedOptionName:
+      type: string
+      description: database reference = options_Advanced.AO_Name
+    AdvancedOptionCost:
+      type: number
+      description: database reference = options_Advanced.AO_Cost
+    AdvancedOptionStock:
+      type: integer
+      description: database reference = options_Advanced.AO_Stock
+    AdvancedOptionWeight:
+      type: number
+      description: database reference = options_Advanced.AO_Weight
+    AdvancedOptionPrice:
+      type: number
+      description: database reference = options_Advanced.AO_Price
+    AdvancedOptionPrice2:
+      type: number
+      description: database reference = options_Advanced.AO_Price_2
+    AdvancedOptionPrice3:
+      type: number
+      description: database reference = options_Advanced.AO_Price_3
+    AdvancedOptionPrice4:
+      type: number
+      description: database reference = options_Advanced.AO_Price_4
+    AdvancedOptionPrice5:
+      type: number
+      description: database reference = options_Advanced.AO_Price_5
+    AdvancedOptionPrice6:
+      type: number
+      description: database reference = options_Advanced.AO_Price_6
+    AdvancedOptionPrice7:
+      type: number
+      description: database reference = options_Advanced.AO_Price_7
+    AdvancedOptionPrice8:
+      type: number
+      description: database reference = options_Advanced.AO_Price_8
+    AdvancedOptionPrice9:
+      type: number
+      description: database reference = options_Advanced.AO_Price_9
+    AdvancedOptionPrice10:
+      type: number
+      description: database reference = options_Advanced.AO_Price_10
+    AdvancedOptionGTIN:
+      type: string
+      description: database reference = options_Advanced.gtin
+    RelatedProduct:
+      type: object
+      description: ''
+      properties:
+        RelatedProduct:
+          type: object
+          description: ''
+          format: null
+    RelatedIndexID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = product_related.id
+    RelatedProductID:
+      type: integer
+      description: database reference = product_related.related_id
+    RelatedProductSorting:
+      type: integer
+      description: database reference = product_related.sorting
+    UpSellingItem:
+      type: object
+      description: ''
+      properties:
+        UpSellingItem:
+          type: object
+          description: ''
+          format: null
+    UpSellingIndexID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = product_accessories.id
+    UpSellingItemID:
+      type: integer
+      description: database reference = product_accessories.accessory_id
+    UpSellingItemSorting:
+      type: integer
+      description: database reference = product_accessories.sorting
+    Discount:
+      type: object
+      description: ''
+      properties:
+        Discount:
+          type: object
+          description: ''
+          format: null
+    DiscountID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = pricing.id
+    DiscountPriceLevel:
+      type: integer
+      description: database reference = pricing.price_level
+    DiscountLowbound:
+      type: integer
+      description: database reference = pricing.lowbound
+    DiscountUpbound:
+      type: integer
+      description: database reference = pricing.upbound
+    DiscountPrice:
+      type: number
+      description: database reference = pricing.price
+    DiscountPercentage:
+      type: boolean
+      description: database reference = pricing.percentage
+    Serial:
+      type: object
+      description: ''
+      properties:
+        Serial:
+          type: object
+          description: ''
+          format: null
+    SerialID:
+      type: integer
+      description: Primary key, auto-incremented. database reference = serials.id
+    SerialUses:
+      type: integer
+      description: database reference = serials.used
+    SerialCode:
+      type: string
+      description: database reference = serials.serial
+    EProduct:
+      type: object
+      description: ''
+      properties:
+        EProduct:
+          type: object
+          description: ''
+          format: null
+    FileNumber:
+      type: integer
+      description: ''
+    FilePath:
+      type: string
+      description: ''
+    Promotions:
+      type: object
+      description: ''
+      properties:
+        Promotions:
+          type: object
+          description: ''
+          format: null
+    PromotionDescription:
+      type: string
+      description: database reference = promotions.promotion_description
+    PromotionStart:
+      type: string
+      description: database reference = promotions.promotion_start
+    PromotionEnd:
+      type: string
+      description: database reference = promotions.promotion_end
+    PromotionEnabled:
+      type: integer
+      description: database reference = promotions.promotion_enabled
+    PromotionByAmount:
+      type: integer
+      description: database reference = promotions.by_amount
+    PromotionCheckByAmount:
+      type: integer
+      description: database reference = promotions.chk_byamount
+    PromotionByQuantity:
+      type: integer
+      description: database reference = promotions.by_quantity
+    PromotionCheckByQuantity:
+      type: integer
+      description: database reference = promotions.chk_byquantity
+    PromotionByProduct:
+      type: integer
+      description: database reference = promotions.by_product
+    PromotionByCategory:
+      type: string
+      description: database reference = promotions.by_category
+    PromotionAmount:
+      type: number
+      description: database reference = promotions.promotion_amount
+    PromotionPercentage:
+      type: integer
+      description: database reference = promotions.promotion_percentage
+    PromotionPerItem:
+      type: integer
+      description: database reference = promotions.promotion_peritem
+    PromotionCategory:
+      type: string
+      description: database reference = promotions.promotion_category
+    PromotionProduct:
+      type: string
+      description: database reference = promotions.promotion_product
+    PromotionFreeShipping:
+      type: integer
+      description: database reference = promotions.promotion_freeshipping
+    PromotionFreeProduct:
+      type: string
+      description: database reference = promotions.promotion_freeproduct
+    PromotionProduct1ID:
+      type: integer
+      description: database reference = promotions.prod1_id
+    PromotionProduct1Quantity:
+      type: integer
+      description: database reference = promotions.prod1_qty
+    PromotionProduct2ID:
+      type: integer
+      description: database reference = promotions.prod2_id
+    PromotionProduct2Quantity:
+      type: integer
+      description: database reference = promotions.prod2_qty
+    PromotionProduct3ID:
+      type: integer
+      description: database reference = promotions.prod3_id
+    PromotionProduct3Quantity:
+      type: integer
+      description: database reference = promotions.prod3_qty
+    PromotionProductID:
+      type: integer
+      description: database reference = promotions.prod4_id
+    PromotionProduct4Quantity:
+      type: integer
+      description: database reference = promotions.prod4_qty
+    PromotionCoupon:
+      type: string
+      description: database reference = promotions.coupon
+    PromotionUses:
+      type: integer
+      description: database reference = promotions.promotion_uses
+    PromotionMaxUses:
+      type: integer
+      description: database reference = promotions.promotion_maxuses
+    PromotionUsesPerCustomer:
+      type: integer
+      description: database reference = promotions.promotion_usespercust
+    PromotionGroupID:
+      type: string
+      description: database reference = promotions.coupon_group
+    PromotionUserid:
+      type: string
+      description: database reference = promotions.userid
+    PromotionLastUpdate:
+      type: string
+      description: database reference = promotions.last_update
+    PromotionByAmount2:
+      type: number
+      description: database reference = promotions.by_amount2
+    PromotionByQuantity2:
+      type: number
+      description: database reference = promotions.by_quantity2
+    PromotionCountry:
+      type: string
+      description: database reference = promotions.promotion_country
+    PromotionState:
+      type: string
+      description: database reference = promotions.promotion_state
+    PromotionNonStackable:
+      type: integer
+      description: database reference = promotions.nonstackable
+    PromotionRulesRetailPrice:
+      type: integer
+      description: database reference = promotions.rules_retailprice
+    PromotionExcludeManufacturers:
+      type: string
+      description: database reference = promotions.exc_manufacturer
+    PromotionFreeProductPrice:
+      type: number
+      description: database reference = promotions.promotion_freeproduct_price
+    PromotionExcludePreorder:
+      type: integer
+      description: database reference = promotions.exc_preorder
+    PromotionExcludeSpecialOrder:
+      type: integer
+      description: database reference = promotions.exc_specialorder
+    PromotionShippingDiscount:
+      type: number
+      description: database reference = promotions.shipping_discount
+    PromotionShippingOptions:
+      type: string
+      description: database reference = promotions.shipping_options
+    PromotionRecurringOrders:
+      type: integer
+      description: database reference = promotions.recurringorders
+    PromotionBonusRewardPoints:
+      type: integer
+      description: database reference = promotions.bonus_reward_points
+    RMA:
+      type: object
+      description: ''
+      properties:
+        RMA:
+          type: object
+          description: ''
+          format: null
+    RMAID:
+      type: integer
+      description: Primary key. Auto-incremented. database reference = RMA.idRma
+    RmaDate:
+      type: string
+      description: database reference = RMA.RmaDate
+    RMAReasonID:
+      type: integer
+      description: database reference = RMA.idRmaReason
+    RMAMethodID:
+      type: integer
+      description: database reference = RMA.idRmaMethod
+    RMAStatusID:
+      type: integer
+      description: database reference = RMA.idRmaStatus
+    StaffComments:
+      type: string
+      description: database reference = RMA.staffComments
+    RMAItemList:
+      type: array
+      description: ''
+    RMAItem:
+      type: object
+      description: ''
+      properties:
+        RMAItem:
+          type: object
+          description: ''
+          format: null
+    ReturnQuantity:
+      type: integer
+      description: database reference = RMA_oitem.qty_return
+    ReceivedQuantity:
+      type: integer
+      description: database reference = RMA_oitem.qty_received
+    RestockQuantity:
+      type: integer
+      description: database reference = RMA_oitem.qty_restock
+    StoreSettings:
+      type: object
+      description: ''
+      properties:
+        StoreSettings:
+          type: object
+          description: ''
+          format: null
+    StoreInformation:
+      type: ''
+      description: ''
+      properties:
+        StoreInformation:
+          type: object
+          description: Reference
+          format: null
+    MerchantInformation:
+      type: ''
+      description: ''
+      properties:
+        MerchantInformation:
+          type: object
+          description: Reference
+          format: null
+    StoreStandards:
+      type: ''
+      description: ''
+      properties:
+        StoreStandards:
+          type: object
+          description: Reference
+          format: null
+    StoreName:
+      type: string
+      description: database reference = store_settings2.storename
+    StoreSlogan:
+      type: string
+      description: database reference = store_settings2.storeslogan
+    StoreLogo:
+      type: string
+      description: database reference = store_settings2.storelogo
+    StoreEmail:
+      type: string
+      description: database reference = company_info.email
+    StoreURL:
+      type: string
+      description: database reference = store_settings2.store_url
+    StoreSecureURL:
+      type: string
+      description: database reference = store_settings2.store_secure_url
+    AlternatePhone:
+      type: string
+      description: database reference = company_info.phone2
+    InvoiceLogo:
+      type: string
+      description: database reference = company_info.invoicelogo
+    InvoiceTerms:
+      type: string
+      description: database reference = company_info.invoice_terms
+    StoreTimeZone:
+      type: string
+      description: database reference = store_settings2.time_zone
+    CurrencySymbol:
+      type: string
+      description: database reference = store_settings2.currency
+    DecimalPlacesOnPrice:
+      type: string
+      description: database reference = store_settings2.prod_decimal_places
+    CurrencyCode:
+      type: string
+      description: database reference = store_settings2.currency_code
+    Webhook:
+      type: object
+      description: ''
+      properties:
+        Webhook:
+          type: object
+          description: ''
+          format: null
+    Url:
+      type: string
+      description: database reference = webhooks.url
+    EventType:
+      type: integer
+      description: database reference = webhooks.event_type
+    DateUpdated:
+      type: string
+      description: database reference = webhooks.dateupdated
+    Format:
+      type: string
+      description: (JSON | XML) database reference = webhook_formats.format_name
+    WebhookPUT:
+      type: object
+      description: ''
+      properties:
+        WebhookPUT:
+          type: object
+          description: ''
+          format: null
+    EventName:
+      type: string
+      description: database reference = webhook_events.event_name
+    WebhookPOST:
+      type: object
+      description: ''
+      properties:
+        WebhookPOST:
+          type: object
+          description: ''
+          format: null
+    limit:
+      type: integer
+      description: Maximum number of items that can be returned
+    offset:
+      type: integer
+      description: Starting point for the return data
+    countonly:
+      type: integer
+      description: Count the number of rows only
+    external_id:
+      type: string
+      description: Admin ExternalId
+    targetpage:
+      type: string
+      description: Target Page
+    costfrom:
+      type: number
+      description: Cost of a product
+    costto:
+      type: number
+      description: Cost of a product
+    pricefrom:
+      type: number
+      description: Price of a product
+    priceto:
+      type: number
+      description: Price of a product
+    stockfrom:
+      type: number
+      description: Stock of a product
+    stockto:
+      type: number
+      description: Stock of a product
+    nontax:
+      type: integer
+      description: Non-Taxable Flag
+    rewarddisable:
+      type: integer
+      description: Disable Rewards Flag
+    lastupdatestart:
+      type: string
+      description: Start Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+    lastupdateend:
+      type: string
+      description: End Date that the product was last updated (mm/dd/yyyy hh:mm:ss)
+    openedstartdate:
+      type: string
+      description: Date Opened (mm/dd/yyyy hh:mm:ss)
+    openedenddate:
+      type: string
+      description: Date Last Action (mm/dd/yyyy hh:mm:ss)
+    lastactionstartdate:
+      type: string
+      description: Date Opened (mm/dd/yyyy hh:mm:ss)
+    lastactionenddate:
+      type: string
+      description: Date Last Action (mm/dd/yyyy hh:mm:ss)
+    custid:
+      type: integer
+      description: Customer Id associated with the CRM
+    msgid:
+      type: integer
+      description: Message ID
+    datestartcreated:
+      type: string
+      description: Created Date Start (mm/dd/yyyy hh:mm:ss)
+    dateendcreated:
+      type: string
+      description: Created Date End (mm/dd/yyyy hh:mm:ss)
+    datestartevent:
+      type: string
+      description: Event Date Start (mm/dd/yyyy hh:mm:ss)
+    dateendevent:
+      type: string
+      description: Event Date End (mm/dd/yyyy hh:mm:ss)
+    datestartexpiration:
+      type: string
+      description: Expiration Date Start (mm/dd/yyyy hh:mm:ss)
+    dateendexpiration:
+      type: string
+      description: Expiration Date End (mm/dd/yyyy hh:mm:ss)
+    invoicenumberstart:
+      type: integer
+      description: Invoice number start (range search)
+    invoicenumberend:
+      type: integer
+      description: Invoice number end (range search)
+    invoiceprefix:
+      type: string
+      description: Invoice Prefix of the order
+    datestart:
+      type: string
+      description: Date Start (mm/dd/yyyy hh:mm:ss)
+    dateend:
+      type: string
+      description: Date End (mm/dd/yyyy hh:mm:ss)
+    bypassorderprocessing:
+      type: integer
+      description: will bypass/ignore stock updates, gift certificates generation, rewards, etc
+    bypassorderemail:
+      type: integer
+      description: will bypass sending the customer new order email if normally applicable
+    datecreatedstart:
+      type: string
+      description: Start date that the webhook was created (mm/dd/yyyy hh:mm:ss)
+    datecreatedend:
+      type: string
+      description: End date that the webhook was created (mm/dd/yyyy hh:mm:ss)
+    dateupdatedstart:
+      type: string
+      description: Start date that the webhook was updated last time (mm/dd/yyyy hh:mm:ss)
+    dateupdatedend:
+      type: string
+      description: End date that the webhook was updated last time (mm/dd/yyyy hh:mm:ss)

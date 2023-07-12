@@ -1,0 +1,1412 @@
+{
+    "info": {
+        "_postman_id": "3139da39-dd86-4e29-9488-15ff2fffd89c",
+        "name": "Claimatic-4.0-Customer beqa change ragaca bka",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "9539505"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "API Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "content-type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"username\" : \"skadam\",\r\n    \"password\" : \"Sanvi@1817\"\r\n}"
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_V1}}/api/login",
+                            "host": [
+                                "{{CORE_APP_URL_V1}}"
+                            ],
+                            "path": [
+                                "api",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Authentication",
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-Amz-Target",
+                                "value": "AWSCognitoIdentityProviderService.InitiateAuth",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-amz-json-1.1",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"AuthParameters\" : {\n        \"USERNAME\" : \"skadam\",\n        \"PASSWORD\" : \"Sanvi@1817\"\n    },\n    \"AuthFlow\" : \"USER_PASSWORD_AUTH\",  \n    \"ClientId\" : \"{{CLIENT_ID}}\" \n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{COGNITO_IDP}}",
+                            "host": [
+                                "{{COGNITO_IDP}}"
+                            ]
+                        },
+                        "description": "Authenticate to Cognito IDP"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Claim APIs",
+            "item": [
+                {
+                    "name": "Claim Creation",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/xml",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Request>\n  <Claims>\n    <Claim DateReceived=\"2021-09-16\" DateOfLoss=\"2021-09-16\" ClaimNumber=\"TC2-968159-2115dsds62222-238\" CATCode=\"ASIGEN\">\n      <Policy PolicyNumber=\"TC2PGR932550618\" />\n      <Insureds>\n        <Insured>\n          <Contact First_Name=\"MICHAEL\" Last_Name=\"MARSHALL\" />\n          <Address Street=\"5280 WILBUR RD\" City=\"MARTINSVILLE\" State=\"IN\" County=\"MORGAN\" Zip=\"46151\" Country=\"US\" />\n        </Insured>\n      </Insureds>\n      <Coverages>\n        <Coverage Name=\"APS1a\" Coverage_Amount=\"100000.00\" Reserve_Amount=\"500.00\" />\n        <Coverage Name=\"Building4\" Coverage_Amount=\"100.00\" Reserve_Amount=\"50.00\" />\n    </Coverages>\n    <Deductibles>\n        <Deductible Name=\"Building\" Deductible_Amount=\"500.00\" />\n        <Deductible Name=\"Contents\" Deductible_Amount=\"700.00\" />\n    </Deductibles>\n      <Addresses>\n        <Address Type=\"Property\" Street=\"5280 WILBUR RD\" City=\"MARTINSVILLE\" State=\"IN\" Zip=\"46151\" County=\"MORGAN\" Country=\"US\" />\n      </Addresses>\n      <Loss_Specs>\n        <COL Code=\"H\" Desc=\"None\" />\n        <TOL Code=\"H\" Desc=\"Hail\" />\n      </Loss_Specs>\n      <Custom_Attributes>\n        <Attribute Name=\"StatusATTRAP\" desc=\"StatusATTRAP\" value=\"NO\" />\n        <Attribute Name=\"StatusPublicADJ\" desc=\"StatusPublicADJ\" value=\"NO\" />\n        <Attribute Name=\"ClaimThird\" desc=\"ClaimThird\" value=\"NO\" />\n        <Attribute Name=\"EstLoss\" desc=\"EstLoss\" value=\"1\" />\n        <Attribute Name=\"PlanID\" desc=\"PlanID\" value=\"MFH\" />\n        <Attribute Name=\"PHA\" desc=\"PHA\" value=\"NO\" />\n        <Attribute Name=\"Contractor\" desc=\"Contractor\" value=\"1\" />\n      </Custom_Attributes>\n    </Claim>\n  </Claims>\n</Request>",
+                            "options": {
+                                "raw": {
+                                    "language": "xml"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/claim/create/multi",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "claim",
+                                "create",
+                                "multi"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Claim",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/xml",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Request>\n  <Claims>\n    <Claim DateReceived=\"2021-09-16\" DateOfLoss=\"2021-09-16\" ClaimNumber=\"TC2-968159-211562-238\" CATCode=\"ASIGEN\">\n      <Policy PolicyNumber=\"TC2PGR932550618\" />\n      <Insureds>\n        <Insured>\n          <Contact First_Name=\"MICHAEL\" Last_Name=\"MARSHALL\" />\n          <Address Street=\"5280 WILBUR RD\" City=\"MARTINSVILLE\" State=\"IN\" County=\"MORGAN\" Zip=\"46151\" Country=\"US\" />\n        </Insured>\n      </Insureds>\n      <Coverages>\n        <Coverage Name=\"APS1a\" Coverage_Amount=\"100000.00\" Reserve_Amount=\"500.00\" />\n        <Coverage Name=\"Building4\" Coverage_Amount=\"100.00\" Reserve_Amount=\"50.00\" />\n    </Coverages>\n    <Deductibles>\n        <Deductible Name=\"Building\" Deductible_Amount=\"500.00\" />\n        <Deductible Name=\"Contents\" Deductible_Amount=\"700.00\" />\n    </Deductibles>\n      <Addresses>\n        <Address Type=\"Property\" Street=\"5280 WILBUR RD\" City=\"MARTINSVILLE\" State=\"IN\" Zip=\"46151\" County=\"MORGAN\" Country=\"US\" />\n      </Addresses>\n      <Assignments>\n        <Assignment Email=\"test@test.com\"  Is_Primary=\"1\" Team=\"001 Complex Team\" Assignment_Type='Internal' />\n      </Assignments>\n      <Loss_Specs>\n        <COL Code=\"H\" Desc=\"None\" />\n        <TOL Code=\"H\" Desc=\"Hail\" />\n      </Loss_Specs>\n      <Custom_Attributes>\n        <Attribute Name=\"StatusATTRAP\" desc=\"StatusATTRAP\" value=\"NO\" />\n        <Attribute Name=\"StatusPublicADJ\" desc=\"StatusPublicADJ\" value=\"NO\" />\n        <Attribute Name=\"ClaimThird\" desc=\"ClaimThird\" value=\"NO\" />\n        <Attribute Name=\"EstLoss\" desc=\"EstLoss\" value=\"1\" />\n        <Attribute Name=\"PlanID\" desc=\"PlanID\" value=\"MFH\" />\n        <Attribute Name=\"PHA\" desc=\"PHA\" value=\"NO\" />\n        <Attribute Name=\"Contractor\" desc=\"Contractor\" value=\"1\" />\n      </Custom_Attributes>\n    </Claim>\n  </Claims>\n</Request>",
+                            "options": {
+                                "raw": {
+                                    "language": "xml"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/claim/update/multi",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "claim",
+                                "update",
+                                "multi"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Claim status",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/xml",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Request>\n\t<Claims>\n\t\t<Claim ClaimNumber=\"123456\" >\n\t\t\t<Status Name =\"First Contact\" />\n\t\t</Claim>\n\t</Claims>\n</Request>",
+                            "options": {
+                                "raw": {
+                                    "language": "xml"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/claim/update_multi_claim_status",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "claim",
+                                "update_multi_claim_status"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove all resources from a claim and call for auto-assignment again",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"claim_number\": \"TC2-968159-211562-80\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/claim/unassign_claim_parties",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "claim",
+                                "unassign_claim_parties"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Un-Assign all parties from the Claim and manually assign specified parties",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"claim_number\": \"731797-204341\",\n    \"assignments\": [\n        {\n            \"resource_id\": 19160,\n            \"resource_email\": \"emailme@thatemail.com\",\n            \"username\": \"MTC-tester\",\n            \"resource_num\": \"123\",\n            \"assignment_party_id\": 2,\n            \"is_primary\": 0,\n            \"team\": \"Team Name\"\n        },\n        {\n            \"resource_email\": \"emailme@thatemail.com\",\n            \"username\": \"sadams\",\n            \"resource_num\": \"\",\n            \"assignment_party_id\": 2,\n            \"is_primary\": 0\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/claim/unassign_claim_parties",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "claim",
+                                "unassign_claim_parties"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Un-Assign specified parties from the Claim.",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"claim_number\": \"731797-204341\",\n    \"unassignments\": [\n        {\n            \"resource_email\": \"emailme@thatemail.com\",\n            \"assignment_party_id\": 2,\n            \"is_primary\": 1\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/claim/unassign_claim_parties",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "claim",
+                                "unassign_claim_parties"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Resource",
+            "item": [
+                {
+                    "name": "Create Resource API",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MjI2MTYzNTMsImV4cCI6MTYyMjcwMjc1Mywicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6InNrYWRhbSIsImNvbXBhbnlfaWQiOiIyMDAwMV9za2FkYW0ifQ.eWO05-h1UfGmWKh6YKDWCOrPee6rWdjrZ4eJ5dXBwjqs1vRSMGSvLQCL39JjMK6fpU0kn5nhaBjQy4RVhKOEPJUtOHkUqjRbrBZZUbFqaetgt2ZHbxpzXha50GG-aJ0Ko1AEzQW-hb3Y_uKVC5NWbe_K2tUZo1zzMKLpziCTTbuvc2ane270L45nK_EMOuZWA1f6ByZILyARkfhHfW1058NfImrwXkNf9NYg7961wWhDhlFTKHzOj3S4Y21BiBmjnRZpN-GfJfbZ6mHKfIgW5jg1jaMu3FRX4zd5ulB7FupmUMHjBpmvGr_7NUYiyQGivPjLeADViiJH_aFBC-1eUCEzXthzdAdUX3_TwADastxuFWDuIDNiKAsoZw67PILO5DPYPwj8yUWrtaEPVOio9Tr9tc7WIVc_mKRJR2gO1pl2eaTNtjrXzmvRBMcAmuWj2TPe3DUaI4CHD9lwGYFvDNpa3ONOBJJFoXQkemCwS0Rum--_CO5S6IHPWYYNDIic5aKdbTP346pCKG9ZskJ-lMyzD5PPIy2cFwfWaPw82RvKDHxLeMs2OQckpjT7nRl8DaneDr193fL23z1ADpd6PlXOjlW5odvQ3tIAtbyOFPvLQLJz9FYqQYN6Hz3LuHHRGWWYEQcr90rJ2OFj1Wsg1q3QBUUNtaya5z2XLCD19J4",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "performerid",
+                                    "value": "123456",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "testuser9",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "test1234",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "skadam9@convene-tech.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "first_name",
+                                    "value": "testuser",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "last_name",
+                                    "value": "testuser",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "city",
+                                    "value": "new york",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "state_code",
+                                    "value": "NY",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "zip",
+                                    "value": "10010",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "address",
+                                    "value": "testtest",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "Mr",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "designation",
+                                    "value": "Field Adjuster",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "1111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "mobile_phone",
+                                    "value": "111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "other_phone",
+                                    "value": "111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "fax",
+                                    "value": "111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "payroll_id",
+                                    "value": "123456",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "is_w2",
+                                    "value": "0",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "ssn_ein",
+                                    "value": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "template_name",
+                                    "value": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "roles",
+                                    "value": "ROLE_REGISTERED",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "skills",
+                                    "value": "Cat - HUR - Flood",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "Teams",
+                                    "value": "001 ASI Claimatic Team",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_num",
+                                    "value": "123455",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/resource/create?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "resource",
+                                "create"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource API",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MjI2MTYzNTMsImV4cCI6MTYyMjcwMjc1Mywicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6InNrYWRhbSIsImNvbXBhbnlfaWQiOiIyMDAwMV9za2FkYW0ifQ.eWO05-h1UfGmWKh6YKDWCOrPee6rWdjrZ4eJ5dXBwjqs1vRSMGSvLQCL39JjMK6fpU0kn5nhaBjQy4RVhKOEPJUtOHkUqjRbrBZZUbFqaetgt2ZHbxpzXha50GG-aJ0Ko1AEzQW-hb3Y_uKVC5NWbe_K2tUZo1zzMKLpziCTTbuvc2ane270L45nK_EMOuZWA1f6ByZILyARkfhHfW1058NfImrwXkNf9NYg7961wWhDhlFTKHzOj3S4Y21BiBmjnRZpN-GfJfbZ6mHKfIgW5jg1jaMu3FRX4zd5ulB7FupmUMHjBpmvGr_7NUYiyQGivPjLeADViiJH_aFBC-1eUCEzXthzdAdUX3_TwADastxuFWDuIDNiKAsoZw67PILO5DPYPwj8yUWrtaEPVOio9Tr9tc7WIVc_mKRJR2gO1pl2eaTNtjrXzmvRBMcAmuWj2TPe3DUaI4CHD9lwGYFvDNpa3ONOBJJFoXQkemCwS0Rum--_CO5S6IHPWYYNDIic5aKdbTP346pCKG9ZskJ-lMyzD5PPIy2cFwfWaPw82RvKDHxLeMs2OQckpjT7nRl8DaneDr193fL23z1ADpd6PlXOjlW5odvQ3tIAtbyOFPvLQLJz9FYqQYN6Hz3LuHHRGWWYEQcr90rJ2OFj1Wsg1q3QBUUNtaya5z2XLCD19J4",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "username",
+                                    "value": "testuser8",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "test12345",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "skadam9@convene-tech.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "first_name",
+                                    "value": "testuser",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "last_name",
+                                    "value": "testuser",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "city",
+                                    "value": "new york",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "state_code",
+                                    "value": "NY",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "zip",
+                                    "value": "10010",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "address",
+                                    "value": "testtest",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "Mr",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "designation",
+                                    "value": "Field Adjuster",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "1111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "mobile_phone",
+                                    "value": "111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "other_phone",
+                                    "value": "111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "fax",
+                                    "value": "111111111111",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "payroll_id",
+                                    "value": "123456",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "is_w2",
+                                    "value": "0",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "ssn_ein",
+                                    "value": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "template_name",
+                                    "value": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "roles",
+                                    "value": "ROLE_REGISTERED",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "skills",
+                                    "value": "Cat - HUR - Flood",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "Teams",
+                                    "value": "001 ASI Claimatic Team",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_num",
+                                    "value": "123455",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "adjuster_available",
+                                    "value": "1",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/resource/update?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "resource",
+                                "update"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource Long/Lat",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-Tenant-Id",
+                                "value": "CT_1000",
+                                "type": "text"
+                            },
+                            {
+                                "warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+                                "key": "content-type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "resource_email",
+                                    "value": "test123@test.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "longitude",
+                                    "value": "27.2046",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "latitude",
+                                    "value": "77.4977",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/resources/location_update",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "resources",
+                                "location_update"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Certificate Create API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "certificate_num",
+                                    "value": "4567865687",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_type_name",
+                                    "value": "NFIP",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_date",
+                                    "value": "2021-10-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_expires",
+                                    "value": "2030-10-01",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/certificate/create",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "certificate",
+                                "create"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Certificate Update API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "certificate_num",
+                                    "value": "4567865687",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_type_name",
+                                    "value": "NFIP",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_date",
+                                    "value": "2021-11-03",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_expires",
+                                    "value": "2031-10-01",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/calendar/update?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "calendar",
+                                "update"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Certificate Remove API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "certificate_num",
+                                    "value": "4567865687",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_type_name",
+                                    "value": "NFIP",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_date",
+                                    "value": "2021-11-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "certificate_expires",
+                                    "value": "2030-10-01",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/certificate/remove?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "certificate",
+                                "remove"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "License Create API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_num",
+                                    "value": "20422234",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "state_code",
+                                    "value": "TX",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_date",
+                                    "value": "2021-09-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_expires",
+                                    "value": "2029-09-30",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resident_license",
+                                    "value": "27993",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/license/create?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "license",
+                                "create"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "License Update API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_num",
+                                    "value": "20422234",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "state_code",
+                                    "value": "TX",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_date",
+                                    "value": "2021-09-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_expires",
+                                    "value": "2030-09-30",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resident_license",
+                                    "value": "27993",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/license/update?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "license",
+                                "update"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "License Remove API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "object_id",
+                                    "value": "32548",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "state_code",
+                                    "value": "TX",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "license_num",
+                                    "value": "20422234",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/license/remove?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "license",
+                                "remove"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource Calendar event API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "start_date",
+                                    "value": "2022-08-1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "end_date",
+                                    "value": "2022-08-9",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "start_time",
+                                    "value": "9 AM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "end_time",
+                                    "value": "8 PM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "event_desc",
+                                    "value": "Testing",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "ricks@claimatic.com\n\n",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "event_type",
+                                    "value": "Vacation",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/calendar/create",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "calendar",
+                                "create"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource Calendar Event API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "start_date",
+                                    "value": "2021-10-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "end_date",
+                                    "value": "2021-10-27",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "start_time",
+                                    "value": "08:00 AM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "end_time",
+                                    "value": "08:00 PM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "old_start_date",
+                                    "value": "2021-08-21",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "old_end_date",
+                                    "value": "2021-08-29",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "old_start_time",
+                                    "value": "09:00 AM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "old_end_time",
+                                    "value": "08:00 PM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "event_desc",
+                                    "value": "claimatic",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "xyz@claimatic.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "event_type",
+                                    "value": "Vacation",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/calendar/update?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "calendar",
+                                "update"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource Calendar event API",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "type",
+                                    "value": "json",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "start_date",
+                                    "value": "2021-10-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "end_date",
+                                    "value": "2021-10-27",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "start_time",
+                                    "value": "08:00 AM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "end_time",
+                                    "value": "08:00 PM",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resource_email",
+                                    "value": "sam@claimatic.com",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{CORE_APP_URL_CLAIM_API}}/calendar/delete?type=json",
+                            "host": [
+                                "{{CORE_APP_URL_CLAIM_API}}"
+                            ],
+                            "path": [
+                                "calendar",
+                                "delete"
+                            ],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "json"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "oauth2",
+        "oauth2": [
+            {
+                "key": "authUrl",
+                "value": "{{AUTH_URL}}/login",
+                "type": "string"
+            },
+            {
+                "key": "clientId",
+                "value": "{{CLIENT_ID}}",
+                "type": "string"
+            },
+            {
+                "key": "redirect_uri",
+                "value": "http://localhost:4200/login",
+                "type": "string"
+            },
+            {
+                "key": "useBrowser",
+                "value": false,
+                "type": "boolean"
+            },
+            {
+                "key": "client_authentication",
+                "value": "body",
+                "type": "string"
+            },
+            {
+                "key": "grant_type",
+                "value": "implicit",
+                "type": "string"
+            },
+            {
+                "key": "scope",
+                "value": "openid",
+                "type": "string"
+            },
+            {
+                "key": "accessTokenUrl",
+                "value": "https://claimatic.auth.us-west-1.amazoncognito.com/oauth2/login",
+                "type": "string"
+            },
+            {
+                "key": "password",
+                "value": "Cloud@786",
+                "type": "string"
+            },
+            {
+                "key": "username",
+                "value": "appuser",
+                "type": "string"
+            },
+            {
+                "key": "clientSecret",
+                "value": "1n3o56k7of41bg9rjpgruphtc9nk2std6v9dh8esb4bkgohk3fsc",
+                "type": "string"
+            },
+            {
+                "key": "tokenName",
+                "value": "DEV",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ]
+}

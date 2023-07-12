@@ -1,0 +1,3833 @@
+swagger: "2.0"
+info:
+  version: v1
+  title: Profiles
+host: pm.mypreferences.com
+basePath: /Profiles/v2/ragaca
+schemes:
+  - https
+paths:
+  /{clientId}/Tags/{tagName}:
+    delete:
+      tags:
+        - test_github_actions
+      operationId: Config_DeleteTags
+      consumes: []
+      produces: []
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: tagName
+          in: path
+          required: true
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "204":
+          description: No Content
+  /{clientId}/AddressTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetAddressTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/AddressTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostAddressTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: addressTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/AddressTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/AddressTypeEntryList"
+  /{clientId}/AlternateIdTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetAlternateIdTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/AlternateIdTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostAlternateIdTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: alternateIdTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/AlternateIdTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/AlternateIdTypeEntryList"
+  /{clientId}/ConsentStatus:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetConsentStatus
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/ConsentStatusList"
+  /{clientId}/ConsentTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetConsentTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: latestVersionOnly
+          in: query
+          required: false
+          type: boolean
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/ConsentTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostConsentTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: consentTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/ConsentTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/ConsentTypeEntryList"
+  /{clientId}/CustomerTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetCustomerTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomerTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostCustomerTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: customerTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CustomerTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomerTypeEntryList"
+  /{clientId}/CustomFields:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetCustomFields
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFields"
+  /{clientId}/CustomFields/DateTime:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetCustomFieldsDateTime
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldDateTimeList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostCustomFieldsDateTime
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: customFields
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CustomFieldDateTimeList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldDateTimeList"
+  /{clientId}/CustomFields/Numeric:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetCustomFieldsNumeric
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldNumericList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostCustomFieldsNumeric
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: customFields
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CustomFieldNumericList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldNumericList"
+  /{clientId}/CustomFields/SelectList:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetCustomFieldsSelectList
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldSelectListList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostCustomFieldsSelectList
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: customFields
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CustomFieldSelectListList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldTextList"
+  /{clientId}/CustomFields/Text:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetCustomFieldsText
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldTextList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostCustomFieldsText
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: customFields
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CustomFieldTextList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldTextList"
+  /{clientId}/EmailTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetEmailTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/EmailTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostEmailTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: emailTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/EmailTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/EmailTypeEntryList"
+  /{clientId}/GroupNames:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetGroupNames
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/GroupTypeNameEntryList"
+  /{clientId}/GroupTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetGroupTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/GroupTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostGroupTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: groupTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/GroupTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/GroupTypeEntryList"
+  /{clientId}/PhoneTypes:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetPhoneTypes
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/PhoneNumberTypeEntryList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostPhoneTypes
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: phoneTypes
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/PhoneNumberTypeEntryList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/PhoneNumberTypeEntryList"
+  /{clientId}/Picklists:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetPicklists
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/PicklistList"
+    post:
+      tags:
+        - Config
+      operationId: Config_PostPicklists
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: pickLists
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/PicklistList"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/PicklistList"
+  /{clientId}/Tags:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetTags
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/TagCountList"
+  /{clientId}/UpdateRules:
+    get:
+      tags:
+        - Config
+      operationId: Config_GetUpdateRules
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/UpdateRuleList"
+  /{clientId}/AddressType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchAddressType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[AddressTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/AddressTypeEntry"
+  /{clientId}/AlternateIdType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchAlternateIdType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[AlternateIdTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/AlternateIdTypeEntry"
+  /{clientId}/ConsentType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchConsentType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[ConsentTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/ConsentTypeEntry"
+  /{clientId}/CustomerType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchCustomerType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[CustomerTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomerTypeEntry"
+  /{clientId}/CustomField/DateTime/{Id}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchCustomFieldDateTime
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[CustomFieldDateTime]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldDateTime"
+  /{clientId}/CustomField/Numeric/{Id}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchCustomFieldNumeric
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[CustomFieldNumeric]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldNumeric"
+  /{clientId}/CustomField/SelectList/{Id}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchCustomFieldSelectList
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[CustomFieldSelectList]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldSelectList"
+  /{clientId}/CustomField/Text/{Id}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchCustomFieldText
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: Id
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[CustomFieldText]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/CustomFieldText"
+  /{clientId}/EmailType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchEmailType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[EmailTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/EmailTypeEntry"
+  /{clientId}/GroupType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchGroupType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[GroupTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/GroupTypeEntry"
+  /{clientId}/PhoneType/{typeId}:
+    patch:
+      tags:
+        - Config
+      operationId: Config_PatchPhoneType
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          type: string
+        - name: typeId
+          in: path
+          required: true
+          type: integer
+          format: int32
+        - name: patchDoc
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/JsonPatchDocument[PhoneNumberTypeEntry]"
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/PhoneNumberTypeEntry"
+
+definitions:
+  AddressTypeEntryList:
+    type: object
+    properties:
+      AddressTypes:
+        type: array
+        items:
+          $ref: "#/definitions/AddressTypeEntry"
+  AddressTypeEntry:
+    required:
+      - TypeName
+      - LocalizedFields
+    type: object
+    properties:
+      TypeName:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedField"
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  LocalizedField:
+    required:
+      - Locale
+      - Name
+    type: object
+    properties:
+      Locale:
+        type: string
+      Name:
+        type: string
+      Description:
+        type: string
+  EditInfo:
+    type: object
+    properties:
+      CreateDate:
+        type: string
+      CreatedBy:
+        type: string
+      ModifiedDate:
+        type: string
+      ModifiedBy:
+        type: string
+  AlternateIdTypeEntryList:
+    type: object
+    properties:
+      AlternateIdTypes:
+        type: array
+        items:
+          $ref: "#/definitions/AlternateIdTypeEntry"
+  AlternateIdTypeEntry:
+    required:
+      - TypeName
+      - LocalizedFields
+    type: object
+    properties:
+      TypeName:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedField"
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  ConsentStatusList:
+    type: object
+    properties:
+      ConsentStatus:
+        type: array
+        items:
+          $ref: "#/definitions/ConsentStatus"
+  ConsentStatus:
+    required:
+      - Name
+    type: object
+    properties:
+      Id:
+        format: int32
+        type: integer
+      Name:
+        type: string
+  ConsentTypeEntryList:
+    type: object
+    properties:
+      ConsentTypes:
+        type: array
+        items:
+          $ref: "#/definitions/ConsentTypeEntry"
+  ConsentTypeEntry:
+    required:
+      - TypeName
+      - Versions
+    type: object
+    properties:
+      TypeName:
+        type: string
+      ChannelId:
+        type: string
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      Versions:
+        type: array
+        items:
+          $ref: "#/definitions/ConsentVersionEntry"
+  ConsentVersionEntry:
+    required:
+      - ConsentVersion
+      - LocalizedFields
+    type: object
+    properties:
+      ConsentVersion:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedConsentField"
+      ExpirationInDays:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      IsAssociatedWithProfiles:
+        type: boolean
+      ConsentVersionId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  LocalizedConsentField:
+    required:
+      - ConsentLanguage
+      - Locale
+      - Name
+    type: object
+    properties:
+      ConsentLanguage:
+        type: string
+      Locale:
+        type: string
+      Name:
+        type: string
+      Description:
+        type: string
+  CustomerTypeEntryList:
+    type: object
+    properties:
+      CustomerTypes:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerTypeEntry"
+  CustomerTypeEntry:
+    required:
+      - TypeName
+      - LocalizedFields
+    type: object
+    properties:
+      TypeName:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedField"
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  CustomFields:
+    type: object
+    properties:
+      DateTimeFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldDateTime"
+      NumericFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldNumeric"
+      SelectListFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldSelectList"
+      TextFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldText"
+  CustomFieldDateTime:
+    required:
+      - Name
+      - LocalizedDisplayNames
+    type: object
+    properties:
+      MinDate:
+        type: string
+      MaxDate:
+        type: string
+      DefaultValue:
+        type: string
+      Id:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      Name:
+        type: string
+      LocalizedDisplayNames:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedDisplayName"
+      Description:
+        type: string
+      UpdateRuleId:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 4
+          - 5
+        type: integer
+      DisplayOrder:
+        format: int32
+        type: integer
+      IsRequired:
+        type: boolean
+      AllowBlanks:
+        type: boolean
+      IsActive:
+        type: boolean
+  CustomFieldNumeric:
+    required:
+      - Name
+      - LocalizedDisplayNames
+    type: object
+    properties:
+      Id:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      MinValue:
+        format: double
+        type: number
+      MaxValue:
+        format: double
+        type: number
+      DecimalPlaces:
+        format: int32
+        type: integer
+      DefaultValue:
+        format: double
+        type: number
+      FieldMask:
+        type: string
+      Name:
+        type: string
+      LocalizedDisplayNames:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedDisplayName"
+      Description:
+        type: string
+      UpdateRuleId:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 4
+          - 5
+        type: integer
+      DisplayOrder:
+        format: int32
+        type: integer
+      IsRequired:
+        type: boolean
+      AllowBlanks:
+        type: boolean
+      IsActive:
+        type: boolean
+  CustomFieldSelectList:
+    required:
+      - PicklistId
+      - DisplayType
+      - Name
+      - LocalizedDisplayNames
+    type: object
+    properties:
+      Id:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      PicklistId:
+        format: int32
+        maximum: 2147483647
+        minimum: 1
+        type: integer
+      DisplayType:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+        type: integer
+      DefaultState:
+        format: int32
+        enum:
+          - 0
+          - 1
+        type: integer
+      Name:
+        type: string
+      LocalizedDisplayNames:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedDisplayName"
+      Description:
+        type: string
+      UpdateRuleId:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 4
+          - 5
+        type: integer
+      DisplayOrder:
+        format: int32
+        type: integer
+      IsRequired:
+        type: boolean
+      AllowBlanks:
+        type: boolean
+      IsActive:
+        type: boolean
+  CustomFieldText:
+    required:
+      - Name
+      - LocalizedDisplayNames
+    type: object
+    properties:
+      Id:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      MinLength:
+        format: int32
+        type: integer
+      MaxLength:
+        format: int32
+        type: integer
+      DefaultValue:
+        type: string
+      RegEx:
+        type: string
+      FieldMask:
+        type: string
+      Name:
+        type: string
+      LocalizedDisplayNames:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedDisplayName"
+      Description:
+        type: string
+      UpdateRuleId:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 4
+          - 5
+        type: integer
+      DisplayOrder:
+        format: int32
+        type: integer
+      IsRequired:
+        type: boolean
+      AllowBlanks:
+        type: boolean
+      IsActive:
+        type: boolean
+  LocalizedDisplayName:
+    required:
+      - Locale
+      - DisplayName
+    type: object
+    properties:
+      Locale:
+        type: string
+      DisplayName:
+        type: string
+      ToolTipText:
+        type: string
+  CustomFieldDateTimeList:
+    type: object
+    properties:
+      DateTimeFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldDateTime"
+  CustomFieldNumericList:
+    type: object
+    properties:
+      NumericFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldNumeric"
+  CustomFieldSelectListList:
+    type: object
+    properties:
+      SelectListFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldSelectList"
+  CustomFieldTextList:
+    type: object
+    properties:
+      TextFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldText"
+  EmailTypeEntryList:
+    type: object
+    properties:
+      EmailTypes:
+        type: array
+        items:
+          $ref: "#/definitions/EmailTypeEntry"
+  EmailTypeEntry:
+    required:
+      - TypeName
+      - LocalizedFields
+    type: object
+    properties:
+      TypeName:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedField"
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  GroupTypeNameEntryList:
+    type: object
+    properties:
+      GroupTypeNames:
+        type: array
+        items:
+          $ref: "#/definitions/GroupTypeNameEntry"
+  GroupTypeNameEntry:
+    required:
+      - GroupType
+    type: object
+    properties:
+      TypeID:
+        format: int32
+        type: integer
+      GroupType:
+        type: string
+      GroupNames:
+        type: array
+        items:
+          $ref: "#/definitions/GroupName"
+  GroupName:
+    type: object
+    properties:
+      Name:
+        type: string
+  GroupTypeEntryList:
+    type: object
+    properties:
+      GroupTypes:
+        type: array
+        items:
+          $ref: "#/definitions/GroupTypeEntry"
+  GroupTypeEntry:
+    required:
+      - TypeName
+      - LocalizedFields
+    type: object
+    properties:
+      TypeName:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedField"
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  PhoneNumberTypeEntryList:
+    type: object
+    properties:
+      PhoneTypes:
+        type: array
+        items:
+          $ref: "#/definitions/PhoneNumberTypeEntry"
+  PhoneNumberTypeEntry:
+    required:
+      - TypeName
+      - LocalizedFields
+    type: object
+    properties:
+      TypeName:
+        type: string
+      LocalizedFields:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedField"
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+      TypeId:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+  PicklistList:
+    type: object
+    properties:
+      Picklists:
+        type: array
+        items:
+          $ref: "#/definitions/Picklist"
+  Picklist:
+    required:
+      - Name
+      - FieldSelectOptions
+    type: object
+    properties:
+      Id:
+        format: int32
+        type: integer
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      Name:
+        type: string
+      Description:
+        type: string
+      IsActive:
+        type: boolean
+      FieldSelectOptions:
+        type: array
+        items:
+          $ref: "#/definitions/FieldSelectOption"
+  FieldSelectOption:
+    required:
+      - LocalizedFieldSelectOptions
+      - Value
+    type: object
+    properties:
+      LocalizedFieldSelectOptions:
+        type: array
+        items:
+          $ref: "#/definitions/LocalizedFieldSelectOption"
+      Value:
+        type: string
+      DisplayOrder:
+        format: int32
+        type: integer
+      IsDefault:
+        type: boolean
+      IsActive:
+        type: boolean
+  LocalizedFieldSelectOption:
+    required:
+      - Locale
+      - DisplayText
+    type: object
+    properties:
+      Locale:
+        type: string
+      DisplayText:
+        type: string
+      ToolTipText:
+        type: string
+  TagCountList:
+    type: object
+    properties:
+      TagCounts:
+        type: array
+        items:
+          $ref: "#/definitions/TagCount"
+  TagCount:
+    type: object
+    properties:
+      Tag:
+        $ref: "#/definitions/Tag"
+      Count:
+        format: int32
+        type: integer
+  Tag:
+    required:
+      - Name
+    type: object
+    properties:
+      Name:
+        type: string
+      IsActive:
+        type: boolean
+      ProfileTagLink:
+        format: int32
+        type: integer
+  UpdateRuleList:
+    type: object
+    properties:
+      UpdateRules:
+        type: array
+        items:
+          $ref: "#/definitions/UpdateRule"
+  UpdateRule:
+    type: object
+    properties:
+      Id:
+        format: int32
+        type: integer
+      Name:
+        type: string
+  JsonPatchDocument[AddressTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[AddressTypeEntry]"
+        readOnly: true
+  Operation[AddressTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[AlternateIdTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[AlternateIdTypeEntry]"
+        readOnly: true
+  Operation[AlternateIdTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[ConsentTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[ConsentTypeEntry]"
+        readOnly: true
+  Operation[ConsentTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[CustomerTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[CustomerTypeEntry]"
+        readOnly: true
+  Operation[CustomerTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[CustomFieldDateTime]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[CustomFieldDateTime]"
+        readOnly: true
+  Operation[CustomFieldDateTime]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[CustomFieldNumeric]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[CustomFieldNumeric]"
+        readOnly: true
+  Operation[CustomFieldNumeric]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[CustomFieldSelectList]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[CustomFieldSelectList]"
+        readOnly: true
+  Operation[CustomFieldSelectList]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[CustomFieldText]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[CustomFieldText]"
+        readOnly: true
+  Operation[CustomFieldText]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[EmailTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[EmailTypeEntry]"
+        readOnly: true
+  Operation[EmailTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[GroupTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[GroupTypeEntry]"
+        readOnly: true
+  Operation[GroupTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[PhoneNumberTypeEntry]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[PhoneNumberTypeEntry]"
+        readOnly: true
+  Operation[PhoneNumberTypeEntry]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  JsonPatchDocument[Picklist]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[Picklist]"
+        readOnly: true
+  Operation[Picklist]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  AsyncApiDataExportStatusResult:
+    type: object
+    properties:
+      AccessToken:
+        format: int32
+        type: integer
+      Status:
+        type: string
+      RowCount:
+        format: int32
+        type: integer
+      ByteCount:
+        format: int64
+        type: integer
+  AsyncApiDataExportSegmentResult:
+    type: object
+    properties:
+      Count:
+        format: int32
+        type: integer
+      HasMore:
+        type: boolean
+      Limit:
+        format: int32
+        type: integer
+      Offset:
+        format: int32
+        type: integer
+      TotalResults:
+        format: int32
+        type: integer
+      UserProfilePreferences:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: object
+  SegmentRequestInfo:
+    type: object
+    properties:
+      CallbackURL:
+        type: string
+      LastDateTime:
+        type: string
+  AsyncToken:
+    type: object
+    properties:
+      AccessToken:
+        format: int32
+        type: integer
+  BulkImportException:
+    type: object
+    properties:
+      Count:
+        format: int32
+        type: integer
+      HasMore:
+        type: boolean
+      Limit:
+        format: int32
+        type: integer
+      Offset:
+        format: int32
+        type: integer
+      TotalResults:
+        format: int32
+        type: integer
+      FailedRecords:
+        type: array
+        items:
+          $ref: "#/definitions/BulkUserProfilePreferenceException"
+  BulkUserProfilePreferenceException:
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      ProfileId:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      DefaultLocale:
+        type: string
+      RegistrationConfirmed:
+        type: boolean
+      CustomerType:
+        type: string
+      PreserveConsents:
+        type: boolean
+      PreservePreferences:
+        type: boolean
+      CustomerName:
+        $ref: "#/definitions/CustomerName"
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/BulkCustomerConsent"
+      ProfilePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/BulkProfilePreference"
+      AlternateIds:
+        type: array
+        items:
+          $ref: "#/definitions/BulkAlternateIdEntry"
+      Addresses:
+        type: array
+        items:
+          $ref: "#/definitions/BulkAddressPreference"
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: "#/definitions/BulkPhoneNumberPreference"
+      Emails:
+        type: array
+        items:
+          $ref: "#/definitions/BulkEmailPreference"
+      Groups:
+        type: array
+        items:
+          $ref: "#/definitions/BulkGroupEntry"
+      ProfileTags:
+        type: array
+        items:
+          $ref: "#/definitions/BulkTag"
+      CustomFields:
+        type: array
+        items:
+          $ref: "#/definitions/BulkCustomFieldValue"
+  ExceptionsDefinition:
+    type: object
+    properties:
+      ErrorMessage:
+        type: string
+      ErrorCode:
+        type: string
+      ErrorField:
+        type: string
+  CustomerName:
+    type: object
+    properties:
+      FirstName:
+        type: string
+      MiddleName:
+        type: string
+      LastName:
+        type: string
+      Prefix:
+        type: string
+      Suffix:
+        type: string
+  BulkCustomerConsent:
+    required:
+      - ConsentType
+      - ConsentVersion
+      - Locale
+      - ConsentStatus
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      ConsentType:
+        type: string
+      ConsentVersion:
+        type: string
+      Locale:
+        type: string
+      ConsentStatus:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        type: integer
+      ConsentDate:
+        type: string
+      ExpirationDate:
+        type: string
+      Expired:
+        type: boolean
+      SourceId:
+        type: string
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      UpdatedVersionPending:
+        type: boolean
+      IsActive:
+        type: boolean
+      ConsentTypeLink:
+        format: int32
+        type: integer
+      ConsentDateUpdated:
+        type: boolean
+      ConsentVersionLink:
+        format: int32
+        type: integer
+      LocaleLink:
+        format: int32
+        type: integer
+  BulkProfilePreference:
+    required:
+      - FilterId
+      - PreferenceType
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      ProgramId:
+        type: string
+      ChannelId:
+        type: string
+      ConsentAssociations:
+        type: array
+        items:
+          $ref: "#/definitions/ConsentAssociation"
+      MatchType:
+        type: string
+      ReasonCode:
+        type: string
+      ExpirationDate:
+        type: string
+      PreferenceStatus:
+        type: string
+      LastModifiedDate:
+        type: string
+      UserId:
+        type: string
+      SourceId:
+        type: string
+      FilterId:
+        type: string
+      PreferenceType:
+        format: int32
+        enum:
+          - 1
+          - 2
+        type: integer
+      FrequencyId:
+        type: string
+      PreferenceAttributes:
+        type: array
+        items:
+          $ref: "#/definitions/PreferenceAttribute"
+      CustomerDate:
+        type: string
+      DropReasonNbr:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      FilterHeaderLink:
+        format: int32
+        type: integer
+      FilterLink:
+        format: int32
+        type: integer
+      FrequencyLink:
+        format: int32
+        type: integer
+  BulkAlternateIdEntry:
+    required:
+      - AlternateId
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      AlternateIdType:
+        type: string
+      AlternateId:
+        type: string
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      AlternateIdTypeLink:
+        format: int32
+        type: integer
+  BulkAddressPreference:
+    required:
+      - Address1
+      - City
+      - StateProvince
+      - PostalCode
+    type: object
+    properties:
+      AddressPreferences:
+        type: array
+        items:
+          $ref: "#/definitions/BulkProfilePreference"
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      AddressType:
+        type: string
+      IsActive:
+        type: boolean
+      IsDefault:
+        type: boolean
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      CassAddress1:
+        type: string
+      CassAddress2:
+        type: string
+      CassCity:
+        type: string
+      CassStateProvince:
+        type: string
+      CassPostalCode:
+        type: string
+      CassStatus:
+        type: string
+      Country:
+        type: string
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      CountryTypeNbr:
+        format: int32
+        type: integer
+      IsModified:
+        type: boolean
+      CassStreetPreDirectional:
+        type: string
+      CassStreetNumber:
+        type: string
+      CassStreetName:
+        type: string
+      CassStreetSuffix:
+        type: string
+      CassStreetPostDirectional:
+        type: string
+      CassSuite:
+        type: string
+      CassZip:
+        type: string
+      CassZip4:
+        type: string
+      AddressTypeLink:
+        format: int32
+        type: integer
+      SysStartTime:
+        format: date-time
+        type: string
+      SysEndTime:
+        format: date-time
+        type: string
+      Address1:
+        type: string
+      Address2:
+        type: string
+      City:
+        type: string
+      StateProvince:
+        type: string
+      CountryCode_Numeric:
+        type: string
+      CountryCode_Alpha2:
+        type: string
+      CountryCode_Alpha3:
+        type: string
+      PostalCode:
+        type: string
+  BulkPhoneNumberPreference:
+    required:
+      - PhoneNumber
+    type: object
+    properties:
+      PhonePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/BulkProfilePreference"
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      PhoneType:
+        type: string
+      PhoneNumber:
+        type: string
+      PhoneNumberNumeric:
+        format: int64
+        type: integer
+      IsDefault:
+        type: boolean
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      IsMobile:
+        type: boolean
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      IsModified:
+        type: boolean
+      PhoneTypeLink:
+        format: int32
+        type: integer
+      SysStartTime:
+        format: date-time
+        type: string
+      SysEndTime:
+        format: date-time
+        type: string
+  BulkEmailPreference:
+    required:
+      - EmailAddress
+    type: object
+    properties:
+      EmailPreferences:
+        type: array
+        items:
+          $ref: "#/definitions/BulkProfilePreference"
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      EmailAddressType:
+        type: string
+      EmailAddress:
+        type: string
+      IsDefault:
+        type: boolean
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      IsModified:
+        type: boolean
+      EmailTypeLink:
+        format: int32
+        type: integer
+      SysStartTime:
+        format: date-time
+        type: string
+      SysEndTime:
+        format: date-time
+        type: string
+  BulkGroupEntry:
+    required:
+      - GroupName
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      GroupType:
+        type: string
+      IsPrimary:
+        type: boolean
+      GroupName:
+        type: string
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      IsActive:
+        type: boolean
+      GroupIdTypeLink:
+        format: int32
+        type: integer
+      GroupIdLink:
+        format: int32
+        type: integer
+  BulkTag:
+    required:
+      - Name
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      Name:
+        type: string
+      IsActive:
+        type: boolean
+      ProfileTagLink:
+        format: int32
+        type: integer
+  BulkCustomFieldValue:
+    required:
+      - Name
+    type: object
+    properties:
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+      Name:
+        type: string
+      Value:
+        type: string
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      CustomFieldLink:
+        format: int32
+        type: integer
+  ConsentAssociation:
+    required:
+      - ConsentType
+      - ConsentVersion
+    type: object
+    properties:
+      ConsentType:
+        type: string
+      ConsentVersion:
+        type: string
+      Locale:
+        type: string
+      ConsentTypeLink:
+        format: int32
+        type: integer
+      ConsentVersionLink:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+  PreferenceAttribute:
+    required:
+      - Key
+      - Value
+    type: object
+    properties:
+      Key:
+        type: string
+      Value:
+        type: string
+  CustomerConsent:
+    required:
+      - ConsentType
+      - ConsentVersion
+      - Locale
+      - ConsentStatus
+    type: object
+    properties:
+      ConsentType:
+        type: string
+      ConsentVersion:
+        type: string
+      Locale:
+        type: string
+      ConsentStatus:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        type: integer
+      ConsentDate:
+        type: string
+      ExpirationDate:
+        type: string
+      Expired:
+        type: boolean
+      SourceId:
+        type: string
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      UpdatedVersionPending:
+        type: boolean
+      IsActive:
+        type: boolean
+      ConsentTypeLink:
+        format: int32
+        type: integer
+      ConsentDateUpdated:
+        type: boolean
+      ConsentVersionLink:
+        format: int32
+        type: integer
+      LocaleLink:
+        format: int32
+        type: integer
+  BulkImportStatus:
+    required:
+      - Name
+    type: object
+    properties:
+      TotalRecordsReceived:
+        format: int32
+        type: integer
+      ValidationSuccessful:
+        format: int32
+        type: integer
+      ValidationFailed:
+        format: int32
+        type: integer
+      Processed:
+        format: int32
+        type: integer
+      Pending:
+        format: int32
+        type: integer
+      Exceptions:
+        format: int32
+        type: integer
+      NotHonored:
+        format: int32
+        type: integer
+      AccessToken:
+        format: int32
+        type: integer
+      Status:
+        type: string
+      Expires:
+        type: string
+      Name:
+        type: string
+      DataStageDuration:
+        format: int32
+        maximum: 10
+        minimum: 0
+        type: integer
+      MatchCriteria:
+        type: string
+      MatchValue:
+        type: string
+      RefreshAlternateIds:
+        type: boolean
+      RefreshContacts:
+        type: boolean
+      RefreshCustomFields:
+        type: boolean
+      RefreshGroups:
+        type: boolean
+      RefreshTags:
+        type: boolean
+  InitiateBulkImport:
+    required:
+      - Name
+    type: object
+    properties:
+      Name:
+        type: string
+      DataStageDuration:
+        format: int32
+        maximum: 10
+        minimum: 0
+        type: integer
+      MatchCriteria:
+        type: string
+      MatchValue:
+        type: string
+      RefreshAlternateIds:
+        type: boolean
+      RefreshContacts:
+        type: boolean
+      RefreshCustomFields:
+        type: boolean
+      RefreshGroups:
+        type: boolean
+      RefreshTags:
+        type: boolean
+  InitiateBulkImportResponse:
+    required:
+      - Name
+    type: object
+    properties:
+      AccessToken:
+        format: int32
+        type: integer
+      Status:
+        type: string
+      Expires:
+        type: string
+      Name:
+        type: string
+      DataStageDuration:
+        format: int32
+        maximum: 10
+        minimum: 0
+        type: integer
+      MatchCriteria:
+        type: string
+      MatchValue:
+        type: string
+      RefreshAlternateIds:
+        type: boolean
+      RefreshContacts:
+        type: boolean
+      RefreshCustomFields:
+        type: boolean
+      RefreshGroups:
+        type: boolean
+      RefreshTags:
+        type: boolean
+  StageBulkImport:
+    type: object
+    properties:
+      UserProfilePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/BulkUserProfilePreference"
+  BulkUserProfilePreference:
+    type: object
+    properties:
+      ProfileId:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      DefaultLocale:
+        type: string
+      RegistrationConfirmed:
+        type: boolean
+      CustomerType:
+        type: string
+      PreserveConsents:
+        type: boolean
+      PreservePreferences:
+        type: boolean
+      CustomerName:
+        $ref: "#/definitions/CustomerName"
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/BulkCustomerConsent"
+      ProfilePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/BulkProfilePreference"
+      AlternateIds:
+        type: array
+        items:
+          $ref: "#/definitions/BulkAlternateIdEntry"
+      Addresses:
+        type: array
+        items:
+          $ref: "#/definitions/BulkAddressPreference"
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: "#/definitions/BulkPhoneNumberPreference"
+      Emails:
+        type: array
+        items:
+          $ref: "#/definitions/BulkEmailPreference"
+      Groups:
+        type: array
+        items:
+          $ref: "#/definitions/BulkGroupEntry"
+      ProfileTags:
+        type: array
+        items:
+          $ref: "#/definitions/BulkTag"
+      CustomFields:
+        type: array
+        items:
+          $ref: "#/definitions/BulkCustomFieldValue"
+      Exceptions:
+        type: array
+        items:
+          $ref: "#/definitions/ExceptionsDefinition"
+  ConsentHistory:
+    type: object
+    properties:
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      ProfileId:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      RegistrationConfirmed:
+        type: boolean
+      CustomerType:
+        type: string
+      PreserveConsents:
+        type: boolean
+      PreservePreferences:
+        type: boolean
+      CustomerName:
+        $ref: "#/definitions/CustomerName"
+      DefaultLocale:
+        type: string
+      UpdateStatus:
+        type: string
+      ReasonCode:
+        type: string
+      AlternateIds:
+        type: array
+        items:
+          $ref: "#/definitions/AlternateIdEntry"
+  AlternateIdEntry:
+    required:
+      - AlternateId
+    type: object
+    properties:
+      AlternateIdType:
+        type: string
+      AlternateId:
+        type: string
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      AlternateIdTypeLink:
+        format: int32
+        type: integer
+  CustomFieldHistory:
+    type: object
+    properties:
+      CustomFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldValue"
+      ProfileId:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      RegistrationConfirmed:
+        type: boolean
+      CustomerType:
+        type: string
+      PreserveConsents:
+        type: boolean
+      PreservePreferences:
+        type: boolean
+      CustomerName:
+        $ref: "#/definitions/CustomerName"
+      DefaultLocale:
+        type: string
+      UpdateStatus:
+        type: string
+      ReasonCode:
+        type: string
+      AlternateIds:
+        type: array
+        items:
+          $ref: "#/definitions/AlternateIdEntry"
+  CustomFieldValue:
+    required:
+      - Name
+    type: object
+    properties:
+      Name:
+        type: string
+      Value:
+        type: string
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      CustomFieldLink:
+        format: int32
+        type: integer
+  ProfilePreferenceHistory:
+    type: object
+    properties:
+      Addresses:
+        type: array
+        items:
+          $ref: "#/definitions/AddressPreference"
+      Emails:
+        type: array
+        items:
+          $ref: "#/definitions/EmailPreference"
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: "#/definitions/PhoneNumberPreference"
+      ProfilePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/ProfilePreference"
+      ProfileId:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      RegistrationConfirmed:
+        type: boolean
+      CustomerType:
+        type: string
+      PreserveConsents:
+        type: boolean
+      PreservePreferences:
+        type: boolean
+      CustomerName:
+        $ref: "#/definitions/CustomerName"
+      DefaultLocale:
+        type: string
+      UpdateStatus:
+        type: string
+      ReasonCode:
+        type: string
+      AlternateIds:
+        type: array
+        items:
+          $ref: "#/definitions/AlternateIdEntry"
+  AddressPreference:
+    required:
+      - Address1
+      - City
+      - StateProvince
+      - PostalCode
+    type: object
+    properties:
+      AddressPreferences:
+        type: array
+        items:
+          $ref: "#/definitions/ProfilePreference"
+      AddressType:
+        type: string
+      IsActive:
+        type: boolean
+      IsDefault:
+        type: boolean
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      CassAddress1:
+        type: string
+      CassAddress2:
+        type: string
+      CassCity:
+        type: string
+      CassStateProvince:
+        type: string
+      CassPostalCode:
+        type: string
+      CassStatus:
+        type: string
+      Country:
+        type: string
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      CountryTypeNbr:
+        format: int32
+        type: integer
+      IsModified:
+        type: boolean
+      CassStreetPreDirectional:
+        type: string
+      CassStreetNumber:
+        type: string
+      CassStreetName:
+        type: string
+      CassStreetSuffix:
+        type: string
+      CassStreetPostDirectional:
+        type: string
+      CassSuite:
+        type: string
+      CassZip:
+        type: string
+      CassZip4:
+        type: string
+      AddressTypeLink:
+        format: int32
+        type: integer
+      SysStartTime:
+        format: date-time
+        type: string
+      SysEndTime:
+        format: date-time
+        type: string
+      Address1:
+        type: string
+      Address2:
+        type: string
+      City:
+        type: string
+      StateProvince:
+        type: string
+      CountryCode_Numeric:
+        type: string
+      CountryCode_Alpha2:
+        type: string
+      CountryCode_Alpha3:
+        type: string
+      PostalCode:
+        type: string
+  EmailPreference:
+    required:
+      - EmailAddress
+    type: object
+    properties:
+      EmailPreferences:
+        type: array
+        items:
+          $ref: "#/definitions/ProfilePreference"
+      EmailAddressType:
+        type: string
+      EmailAddress:
+        type: string
+      IsDefault:
+        type: boolean
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      IsModified:
+        type: boolean
+      EmailTypeLink:
+        format: int32
+        type: integer
+      SysStartTime:
+        format: date-time
+        type: string
+      SysEndTime:
+        format: date-time
+        type: string
+  PhoneNumberPreference:
+    required:
+      - PhoneNumber
+    type: object
+    properties:
+      PhonePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/ProfilePreference"
+      PhoneType:
+        type: string
+      PhoneNumber:
+        type: string
+      PhoneNumberNumeric:
+        format: int64
+        type: integer
+      IsDefault:
+        type: boolean
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      IsMobile:
+        type: boolean
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      IsModified:
+        type: boolean
+      PhoneTypeLink:
+        format: int32
+        type: integer
+      SysStartTime:
+        format: date-time
+        type: string
+      SysEndTime:
+        format: date-time
+        type: string
+  ProfilePreference:
+    required:
+      - FilterId
+      - PreferenceType
+    type: object
+    properties:
+      ProgramId:
+        type: string
+      ChannelId:
+        type: string
+      ConsentAssociations:
+        type: array
+        items:
+          $ref: "#/definitions/ConsentAssociation"
+      MatchType:
+        type: string
+      ReasonCode:
+        type: string
+      ExpirationDate:
+        type: string
+      PreferenceStatus:
+        type: string
+      LastModifiedDate:
+        type: string
+      UserId:
+        type: string
+      SourceId:
+        type: string
+      FilterId:
+        type: string
+      PreferenceType:
+        format: int32
+        enum:
+          - 1
+          - 2
+        type: integer
+      FrequencyId:
+        type: string
+      PreferenceAttributes:
+        type: array
+        items:
+          $ref: "#/definitions/PreferenceAttribute"
+      CustomerDate:
+        type: string
+      DropReasonNbr:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      FilterHeaderLink:
+        format: int32
+        type: integer
+      FilterLink:
+        format: int32
+        type: integer
+      FrequencyLink:
+        format: int32
+        type: integer
+  UserProfilePreference:
+    type: object
+    properties:
+      Consents:
+        type: array
+        items:
+          $ref: "#/definitions/CustomerConsent"
+      CustomFields:
+        type: array
+        items:
+          $ref: "#/definitions/CustomFieldValue"
+      Groups:
+        type: array
+        items:
+          $ref: "#/definitions/GroupEntry"
+      ProfileTags:
+        type: array
+        items:
+          $ref: "#/definitions/Tag"
+      Addresses:
+        type: array
+        items:
+          $ref: "#/definitions/AddressPreference"
+      Emails:
+        type: array
+        items:
+          $ref: "#/definitions/EmailPreference"
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: "#/definitions/PhoneNumberPreference"
+      ProfilePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/ProfilePreference"
+      ProfileId:
+        format: int32
+        type: integer
+      IsActive:
+        type: boolean
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      RegistrationConfirmed:
+        type: boolean
+      CustomerType:
+        type: string
+      PreserveConsents:
+        type: boolean
+      PreservePreferences:
+        type: boolean
+      CustomerName:
+        $ref: "#/definitions/CustomerName"
+      DefaultLocale:
+        type: string
+      UpdateStatus:
+        type: string
+      ReasonCode:
+        type: string
+      AlternateIds:
+        type: array
+        items:
+          $ref: "#/definitions/AlternateIdEntry"
+  GroupEntry:
+    required:
+      - GroupName
+    type: object
+    properties:
+      GroupType:
+        type: string
+      IsPrimary:
+        type: boolean
+      GroupName:
+        type: string
+      Edited:
+        $ref: "#/definitions/EditInfo"
+      IsActive:
+        type: boolean
+      GroupIdTypeLink:
+        format: int32
+        type: integer
+      GroupIdLink:
+        format: int32
+        type: integer
+  ArchivePreferences:
+    type: object
+    properties:
+      GlobalDeactivate:
+        type: boolean
+      Reason_Code:
+        type: string
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: "#/definitions/ArchivePhoneNumberPreference"
+      Addresses:
+        type: array
+        items:
+          $ref: "#/definitions/ArchiveAddressPreference"
+      Emails:
+        type: array
+        items:
+          $ref: "#/definitions/ArchiveEmailPreference"
+      ProfilePreferences:
+        type: array
+        items:
+          $ref: "#/definitions/ArchiveProfilePreference"
+  ArchivePhoneNumberPreference:
+    type: object
+    properties:
+      PhoneType:
+        type: string
+      PhoneNumber:
+        type: string
+      PhoneNumberNumeric:
+        format: int64
+        type: integer
+      FilterId:
+        type: string
+      Reason_Code:
+        type: string
+  ArchiveAddressPreference:
+    type: object
+    properties:
+      Address1:
+        type: string
+      Address2:
+        type: string
+      City:
+        type: string
+      StateProvince:
+        type: string
+      CountryCode_Numeric:
+        type: string
+      CountryCode_Alpha2:
+        type: string
+      CountryCode_Alpha3:
+        type: string
+      PostalCode:
+        type: string
+      AddressType:
+        type: string
+      FilterId:
+        type: string
+      Reason_Code:
+        type: string
+  ArchiveEmailPreference:
+    type: object
+    properties:
+      EmailAddressType:
+        type: string
+      EmailAddress:
+        type: string
+      FilterId:
+        type: string
+      Reason_Code:
+        type: string
+  ArchiveProfilePreference:
+    required:
+      - CustomerType
+    type: object
+    properties:
+      CustomerType:
+        type: string
+      FilterId:
+        type: string
+      Reason_Code:
+        type: string
+  JsonPatchDocument[UserProfilePreference]:
+    type: object
+    properties:
+      Operations:
+        type: array
+        items:
+          $ref: "#/definitions/Operation[UserProfilePreference]"
+        readOnly: true
+  Operation[UserProfilePreference]:
+    type: object
+    properties:
+      value:
+        type: object
+      path:
+        type: string
+      op:
+        type: string
+      from:
+        type: string
+  SearchCustomFieldValue:
+    required:
+      - Name
+    type: object
+    properties:
+      Name:
+        type: string
+      Value:
+        type: string
+  SearchCustomFieldSelectListValue:
+    required:
+      - Name
+    type: object
+    properties:
+      OperatorId:
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 3
+        type: integer
+      Name:
+        type: string
+      Value:
+        type: string
+  SearchPreferenceAttribute:
+    required:
+      - Key
+    type: object
+    properties:
+      Key:
+        type: string
+      Value:
+        type: string
+  AcceptedResponse:
+    type: object
+    properties:
+      AlternateId:
+        type: string
+      AlternateIdType:
+        type: string
+      ProfileId:
+        format: int32
+        type: integer
+      UpdateStatus:
+        type: string
+      SubmittedUtcTime:
+        type: string
+  ProfilesSegmentPermission:
+    type: object
+    properties:
+      UserGroupLink:
+        format: int32
+        type: integer
+      CanView:
+        type: boolean
+      CanEdit:
+        type: boolean
+      CanExecute:
+        type: boolean
+      Special:
+        format: int32
+        type: integer
+  ProfilesSegmentGroupPermission:
+    type: object
+    properties:
+      UserGroupLink:
+        format: int32
+        type: integer
+      CanView:
+        type: boolean
+      CanEdit:
+        type: boolean
+      CanExecute:
+        type: boolean
+      Special:
+        format: int32
+        type: integer
+  GetDownloadFilePathRequestModel:
+    type: object
+    properties:
+      DownloadFileLink:
+        format: int32
+        type: integer
+      ScheduleExportRunHistoryLink:
+        format: int32
+        type: integer
