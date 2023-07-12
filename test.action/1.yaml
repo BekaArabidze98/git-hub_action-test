@@ -10,7 +10,7 @@ paths:
   /{clientId}/Tags/{tagName}:
     delete:
       tags:
-        - beqquna
+        - beqquna da tornike
       operationId: Config_DeleteTags
       consumes: []
       produces: []
