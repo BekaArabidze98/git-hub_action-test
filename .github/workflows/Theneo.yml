@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: "16"
       - name: process documentation on server
-        uses: theneoAPIDoc/api-documentation@main
+        uses: Theneo-Inc/api-documentation@1.0
         with:
-          PATH: 1.yaml
+          PATH: test.action/1.yaml
           PROJECT_KEY: trst-action
           SECRET: 41dcc8db-6d91-4efe-8882-4d8b216ff3d7
