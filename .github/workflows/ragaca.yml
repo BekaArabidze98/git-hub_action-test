@@ -19,5 +19,5 @@ jobs:
         uses: Theneo-Inc/api-documentation@1.0.1
         with:
           PATH: test.action/1.yaml
-          PROJECT_KEY: trst-action
-          SECRET: 41dcc8db-6d91-4efe-8882-4d8b216ff3d7
+          PROJECT_KEY: chanhelog
+          SECRET: d07d5cb1-ca38-4f0e-9dda-2bf0c91f2568
