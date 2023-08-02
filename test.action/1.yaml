@@ -10,7 +10,7 @@ paths:
   /{clientId}/Tags/{tagName}:
     delete:
       tags:
-        - changessss 123
+        - beqa
       operationId: Config_DeleteTags
       consumes: []
       produces: []
