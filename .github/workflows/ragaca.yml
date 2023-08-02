@@ -19,5 +19,5 @@ jobs:
         uses: Theneo-Inc/api-documentation@1.0.1
         with:
           PATH: test.action/1.yaml
-          PROJECT_KEY: owlopps-rec5
-          SECRET: c0ceeda4-dc7c-4fd2-a1d4-cf0b7956e333
+          PROJECT_KEY: weather
+          SECRET: 3340268c-95fa-4d0e-9b35-d460eec273c8
