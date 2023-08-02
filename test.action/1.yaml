@@ -10,7 +10,7 @@ paths:
   /{clientId}/Tags/{tagName}:
     delete:
       tags:
-        - hdjshjdhjdhj
+        - changessss 123
       operationId: Config_DeleteTags
       consumes: []
       produces: []
