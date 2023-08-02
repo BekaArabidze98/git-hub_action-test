@@ -10,7 +10,7 @@ paths:
   /{clientId}/Tags/{tagName}:
     delete:
       tags:
-        - beqquna da tornike da saba da moris da ragac da kidev
+        - github action test 2 august
       operationId: Config_DeleteTags
       consumes: []
       produces: []
